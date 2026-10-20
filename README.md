@@ -7,10 +7,10 @@ Site institucional para barbearia e cabelereiro, desenvolvido pelo Grupo 1 do Ca
 
 ## Equipe
 
-Henrique Mesquita | Comercial
-Bianca | Marketing
-Giovani | ADM
-Leonardo | Projetos
+Henrique Mesquita | Comercial |
+Bianca | Marketing |
+Giovani | ADM |
+Leonardo | Projetos |
 
 ## Requisitos e entregas do case
 
