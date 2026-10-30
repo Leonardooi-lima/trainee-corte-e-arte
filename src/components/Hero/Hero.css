@@ -1,7 +1,8 @@
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 820px;
+  max-height: 64vw;
+  min-height: 600px;
   overflow: hidden;
   isolation: isolate;
 
@@ -12,7 +13,7 @@
   box-sizing: border-box;
 }
 
-.hero__background {
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -24,6 +25,10 @@
   transform: scale(1.02);
   z-index: 0;
 }
+
+
+
+
 
 .hero::before {
   content: "";
@@ -39,49 +44,56 @@
   );
 }
 
-.hero__content {
+
+
+
+
+.conteudo-hero{
   position: relative;
   z-index: 2;
-  min-height: calc(100svh - 52px);
+  height: calc(100% - 46px);
   box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(60px, 10vh, 92px) 24px 80px;
+  padding: 88px 24px 60px;
   text-align: center;
 }
 
-.hero__logo {
-  width: clamp(120px, 11vw, 150px);
+.logo-hero {
+  width: 130px;
   height: auto;
   display: block;
 }
 
-.hero__title {
-  margin: 35px 0 0;
-  font-family: "DejaVu Sans Condensed", "Arial Narrow", sans-serif;
-  font-size: clamp(42px, 4.6vw, 62px);
-  font-weight: 800;
-  line-height: 1.22;
+.titulo-hero {
+  margin: 20px 0 0;
+  font-family: "Antonio", "Arial Narrow", sans-serif;
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.08;
   letter-spacing: 1px;
   text-shadow: 3px 4px 3px rgba(0, 0, 0, .75);
 }
 
-.hero__title span {
+.titulo-hero span {
   display: block;
+  margin-top: 2px;
+  font-size: .86em;
 }
 
-.hero__presentation {
+.texto-hero {
   position: relative;
-  width: min(830px, 76vw);
-  margin-top: 16px;
-  padding-top: 25px;
+  width: 76%;
+  max-width: 830px;
+  margin-top: 60px;
+  padding-top: 38px;
   border-top: 2px solid rgba(0, 0, 0, .9);
 }
 
-.hero__presentation::before,
-.hero__presentation::after {
+.texto-hero::before,
+.texto-hero::after {
   content: "";
   position: absolute;
   top: -10px;
@@ -92,30 +104,34 @@
   border-bottom: 9px solid transparent;
 }
 
-.hero__presentation::before {
+.texto-hero::before {
   left: 0;
   border-left: 0;
   border-right: 15px solid #090909;
   transform: rotate(180deg);
 }
 
-.hero__presentation::after {
+.texto-hero::after {
   right: 0;
   border-left: 15px solid #090909;
 }
 
-.hero__presentation p {
+.texto-hero p {
   margin: 0;
-  color: rgba(255, 255, 255, .84);
-  font-size: clamp(17px, 1.65vw, 23px);
+  color: rgba(255, 255, 255, .68);
+  font-family: "Cabin", Arial, sans-serif;
+  font-size: 21px;
   line-height: 1.75;
 }
 
-.hero__presentation strong {
+.texto-hero strong {
+  color: #fff;
+  font-size: 1.08em;
+  font-weight: 600;
   font-style: italic;
 }
 
-.hero__more {
+.saiba-mais {
   position: absolute;
   left: 0;
   right: 0;
@@ -129,12 +145,14 @@
   justify-content: center;
   color: #eee;
   background: rgba(30, 30, 30, .6);
-  font-family: "Arial Narrow", sans-serif;
+  font-family: "Antonio", "Arial Narrow", sans-serif;
+  font-weight: 600;
   font-size: 12px;
+  letter-spacing: .4px;
   text-decoration: none;
 }
 
-.hero__more span {
+.saiba-mais span {
   width: 7px;
   height: 7px;
   margin-top: -1px;
@@ -143,22 +161,75 @@
   transform: rotate(45deg);
 }
 
+@media (max-width: 1200px) {
+  .conteudo-hero {
+    padding-top: 78px;
+  }
+
+  .logo-hero {
+    width: 116px;
+  }
+
+  .titulo-hero {
+    margin-top: 18px;
+    font-size: 56px;
+  }
+
+  .texto-hero {
+    margin-top: 54px;
+    padding-top: 34px;
+  }
+
+  .texto-hero p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .conteudo-hero {
+    padding-top: 64px;
+  }
+
+  .logo-hero {
+    width: 98px;
+  }
+
+  .titulo-hero {
+    margin-top: 15px;
+    font-size: 48px;
+  }
+
+  .texto-hero {
+    margin-top: 46px;
+    padding-top: 28px;
+  }
+
+  .texto-hero p {
+    font-size: 17px;
+  }
+}
+
 @media (max-width: 700px) {
-  .hero__content {
+  .hero {
+    height: 100svh;
+    min-height: 620px;
+  }
+
+  .conteudo-hero {
     justify-content: center;
     padding-top: 35px;
     padding-bottom: 80px;
   }
 
-  .hero__title {
+  .titulo-hero {
     margin-top: 22px;
   }
 
-  .hero__presentation {
+  .texto-hero {
     width: 92vw;
   }
 
-  .hero__presentation br {
+  .texto-hero br {
     display: none;
   }
 }

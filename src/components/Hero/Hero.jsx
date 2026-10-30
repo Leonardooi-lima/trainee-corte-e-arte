@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="hero" id="inicio">
       <video
-        className="hero__background"
+        className="hero-video"
         autoPlay
         loop
         muted
@@ -15,19 +15,19 @@ export default function Hero() {
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
 
-      <div className="hero__content">
+      <div className="conteudo-hero">
         <img
-          className="hero__logo"
+          className="logo-hero"
           src={logo}
           alt="Corte & Arte"
         />
 
-        <h1 className="hero__title">
+        <h1 className="titulo-hero">
           BARBEARIA PREMIUM
           <span>EM BAURU</span>
         </h1>
 
-        <div className="hero__presentation">
+        <div className="texto-hero">
           <p>
             Na barbearia Corte &amp; Arte você encontra atendimento especializado,
             <br />
@@ -38,7 +38,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <a className="hero__more" href="#servicos">
+      <a className="saiba-mais" href="#servicos">
         SAIBA MAIS
         <span aria-hidden="true" />
       </a>
