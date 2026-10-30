@@ -1,5 +1,7 @@
+import Servicos from "./components/Servicos.jsx";
+
 function App() {
-  return null
+  return <Servicos />;
 }
 
-export default App
+export default App;

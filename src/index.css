@@ -1,3 +1,6 @@
+/* Fontes usadas no CORTE & ARTE */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lora:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap");
+
 html,
 body,
 #root {
@@ -6,5 +9,5 @@ body,
 }
 
 body {
-  background-color: #808080;
+  background-color: #1b1b1b;
 }
