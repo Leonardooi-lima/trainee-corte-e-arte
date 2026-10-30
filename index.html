@@ -1,12 +1,33 @@
 <!doctype html>
-<html lang="en">
+
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>trainee-corte-e-arte</title>
+
+    <!-- carrega as fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/App.css">
+
   </head>
   <body>
+    <header class="header">
+
+      <a class="logo" href="#inicio" aria-label="Corte & Arte - início">CORTE & ARTE</a>
+      <nav class="main-nav" aria-label="Navegação">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <a class = "header-cta" href="agendamento">Agende seu horário</a>
+    </header>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="src/main.jsx"></script>
   </body>
 </html>
