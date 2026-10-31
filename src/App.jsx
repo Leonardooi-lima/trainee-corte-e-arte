@@ -1,5 +1,9 @@
+import SobreNos from './sections/sobre-nos/SobreNos';
+
 function App() {
-  return null
+  return (
+    <SobreNos />
+  );
 }
 
-export default App
+export default App;
