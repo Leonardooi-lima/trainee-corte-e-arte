@@ -177,6 +177,7 @@
 
   .sobre-nos__diferenciais {
     gap: 16px;
+    margin-top: 10px;
   }
 
   .sobre-nos__icon-box {
@@ -287,10 +288,6 @@
 
   .sobre-nos__title {
     margin-bottom: 12px;
-  }
-
-  .sobre-nos__text {
-    margin-bottom: 32px;
   }
 
   .sobre-nos__diferenciais {
