@@ -1,0 +1,171 @@
+/* =====================================
+   NOSSO TIME — Fontes
+   ===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400;600&family=Cabin:wght@400;500&family=Inria+Sans:wght@400&display=swap');
+
+/* =====================================
+   NOSSO TIME — Design tokens
+   ===================================== */
+.nosso-time {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: 'Cabin', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+}
+
+/* Container principal */
+.nosso-time__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 24px 48px;
+  box-sizing: border-box;
+}
+
+/* Identificação da seção */
+.nosso-time__label {
+  display: block;
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #bdbdbd;
+  margin-bottom: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Título principal com gradiente radial */
+.nosso-time__title {
+  font-family: 'Antonio', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 40px 0;
+  color: #ffffff;
+  background: radial-gradient(
+    ellipse at center,
+    #ffffff 18%,
+    #999999 85%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  letter-spacing: 1.5px;
+  text-align: left;
+}
+
+/* Lista de profissionais */
+.nosso-time__profissionais {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Card do profissional */
+.nosso-time__profissional {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Fotografia do profissional */
+.nosso-time__foto {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Foto do barber-1 — ajuste para mostrar rosto completo */
+.nosso-time__foto--barber1 {
+  object-position: 50% 25%;
+}
+
+/* Mobile — frame das fotografias */
+@media (max-width: 1023px) {
+  .nosso-time__foto {
+    width: 327px;
+    height: 336px;
+  }
+}
+
+/* Nome do profissional */
+.nosso-time__nome {
+  font-family: 'Antonio', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #f5f5f5;
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+/* Especialidade */
+.nosso-time__especialidade {
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #bdbdbd;
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+/* =====================================
+   DESKTOP (≥ 1024px)
+   ===================================== */
+@media (min-width: 1024px) {
+  .nosso-time__container {
+    padding: 56px 64px 88px;
+  }
+
+  .nosso-time__label {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .nosso-time__title {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  .nosso-time__profissionais {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .nosso-time__profissional {
+    flex: 0 0 auto;
+    max-width: 350px;
+  }
+
+  .nosso-time__foto {
+    width: 350px;
+    height: 360px;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+
+  .nosso-time__foto:hover {
+    filter: grayscale(0%);
+  }
+
+  .nosso-time__nome {
+    font-size: 20px;
+  }
+
+  .nosso-time__especialidade {
+    font-size: 14px;
+  }
+}
