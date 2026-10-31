@@ -23,13 +23,14 @@ export default function Hero() {
         />
 
         <h1 className="titulo-hero">
-          BARBEARIA PREMIUM
+          BARBEARIA
+          <br className="quebra-mobile" /> PREMIUM
           <span>EM BAURU</span>
         </h1>
 
         <div className="texto-hero">
           <p>
-            Na barbearia Corte &amp; Arte você encontra atendimento especializado,
+            Na barbearia Corte &amp; Arte você encontra um atendimento especializado,
             <br />
             ambiente moderno e profissionais que transformam
             <br />
