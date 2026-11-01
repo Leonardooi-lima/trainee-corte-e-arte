@@ -48,7 +48,7 @@ function CardServicoDesktop({ servico }) {
 
 function SecaoServicos({ desktop }) {
   return (
-    <section className="ca-secao" aria-labelledby="ca-titulo-servicos">
+    <section id="servicos" className="ca-secao" aria-labelledby="ca-titulo-servicos">
       <div className="ca-conteudo">
         <TituloSecao desktop={desktop} id="ca-titulo-servicos">NOSSOS SERVIÇOS</TituloSecao>
 

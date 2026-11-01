@@ -1,5 +1,4 @@
-/* Fontes usadas no CORTE & ARTE */
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lora:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Cabin:ital,wght@0,400;0,500;1,600&display=swap');
 
 html,
 body,
@@ -9,5 +8,6 @@ body,
 }
 
 body {
-  background-color: #1b1b1b;
+  background-color: #111;
+  font-family: "Cabin", Arial, sans-serif;
 }
