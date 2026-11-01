@@ -1,25 +1,42 @@
-import logo from "../../assets/logos/logo-corte-arte.svg";
+import logo from "../../assets/logos/logo-corte-arte.webp";
 import "./Hero.css";
 
 export default function Hero() {
+  const reduzirMovimento =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   return (
     <section className="hero" id="inicio">
-      <video
-        className="hero-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+      {reduzirMovimento ? (
+        <img
+          className="hero-video"
+          src="/images/hero-poster.webp"
+          alt=""
+          aria-hidden="true"
+        />
+      ) : (
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/hero-poster.webp"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+      )}
 
       <div className="conteudo-hero">
         <img
           className="logo-hero"
           src={logo}
           alt="Corte & Arte"
+          width="348"
+          height="336"
         />
 
         <h1 className="titulo-hero">
