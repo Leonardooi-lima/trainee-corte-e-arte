@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Cabin:ital,wght@0,400;0,500;1,600&display=swap');
+
 html,
 body,
 #root {
@@ -6,5 +8,6 @@ body,
 }
 
 body {
-  background-color: #808080;
+  background-color: #111;
+  font-family: "Cabin", Arial, sans-serif;
 }
