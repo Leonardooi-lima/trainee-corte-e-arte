@@ -1,17 +1,60 @@
 .equipe {
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 292px 5.7% 100px;
+  padding: 98px 5.7% 100px;
   background: #202020;
+}
+
+.equipe-cabecalho,
+.equipe-fotos {
+  max-width: 1116px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.equipe-cabecalho {
+  margin-bottom: 58px;
+}
+
+.equipe-sobretitulo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: #f2f2f2;
+  font-family: 'Cabin', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 1.8px;
+}
+
+.equipe-sobretitulo::before {
+  content: '';
+  width: 11px;
+  height: 1px;
+  background: currentColor;
+}
+
+.equipe-titulo {
+  margin: 33px 0 0;
+  color: #a5a3a3;
+  font-family: 'Antonio', 'Arial Narrow', sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 1.5px;
+}
+
+.equipe-titulo span {
+  color: inherit;
 }
 
 .equipe-fotos {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 350fr) minmax(0, 326fr) minmax(0, 350fr);
   align-items: start;
   gap: 48px;
-  max-width: 1116px;
-  margin: 0 auto;
 }
 
 .equipe-foto {
@@ -22,6 +65,7 @@
 
 .equipe-foto img {
   display: block;
+  width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 22px;
@@ -29,7 +73,24 @@
 
 @media (max-width: 800px) {
   .equipe {
-    padding: 195px 30px 80px;
+    padding: 61px 30px 80px;
+  }
+
+  .equipe-cabecalho {
+    max-width: 350px;
+    margin-bottom: 29px;
+  }
+
+  .equipe-sobretitulo {
+    font-size: 11px;
+    letter-spacing: 0.4px;
+  }
+
+  .equipe-titulo {
+    margin-top: 20px;
+    font-size: 38px;
+    line-height: 1.08;
+    letter-spacing: 1.2px;
   }
 
   .equipe-fotos {

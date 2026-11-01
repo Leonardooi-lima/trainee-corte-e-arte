@@ -36,7 +36,7 @@ npm -v
 git --version
 ```
 
-### 1. Clone o repositorio 
+### 1. Clone o repositorio
 
 ```bash
 git clone https://github.com/Leonardooi-lima/trainee-corte-e-arte
@@ -49,9 +49,10 @@ cd trainee-corte-e-arte
 ```
 
 ### 3. Instale as dependencias
+
 ```bash
 
-npm ci 
+npm ci
 ```
 
 ### 4. Execute o projeto
@@ -64,11 +65,24 @@ Abra o endereço informado pelo terminal, normalmente:
 
 http://localhost:5173/
 
+### Formatação do código
+
+Para formatar automaticamente todo o projeto no padrão definido em
+`.prettierrc.json`:
+
+```bash
+npm run format
+```
+
+Para apenas verificar se os arquivos estão formatados, sem alterá-los:
+
+```bash
+npm run format:check
+```
 
 ## Fluxo de trabalho com o Git
 
 Para evitar conflitos, cada funcionalidade deverá ser desenvolvida em uma branch separada.
-
 
 **Não desenvolva diretamente na branch 'main'.**
 
@@ -82,6 +96,7 @@ git pull origin main
 ```
 
 ### Criando uma branch
+
 ```bash
 
 git switch -c feat/nome-da-secao
@@ -92,7 +107,7 @@ git switch -c feat/nome-da-secao
 Para visualizar todos os arquivos que não foram commitados:
 
 ```bash
-git status 
+git status
 ```
 
 Adicione os arquivos desejados:
@@ -108,10 +123,10 @@ git commit -m "feat: adiciona seção de serviços"
 ```
 
 Enviando o commit para sua branch:
+
 ```bash
 git push
 ```
-
 
 ## Quando pronto, crie um Pull request para a branch main
 
@@ -122,5 +137,3 @@ git push
 5. Selcione sua branch como origem (compare).
 6. Adicione um titulo e uma descrição das alterações, também consegue adicionar alguem para revisar.
 7. Clique em **Create pull request**.
-
-

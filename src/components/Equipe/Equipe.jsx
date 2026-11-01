@@ -12,6 +12,15 @@ const profissionais = [
 export default function Equipe() {
   return (
     <section className="equipe" aria-label="Nossa equipe">
+      <header className="equipe-cabecalho">
+        <p className="equipe-sobretitulo">NOSSO TIME</p>
+        <h2 className="equipe-titulo">
+          Quem transforma
+          <br />
+          corte em <span>arte</span>
+        </h2>
+      </header>
+
       <div className="equipe-fotos">
         {profissionais.map((profissional) => (
           <div className="equipe-foto" key={profissional.src}>
