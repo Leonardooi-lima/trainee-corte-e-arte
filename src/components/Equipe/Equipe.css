@@ -1,0 +1,44 @@
+.equipe {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 292px 5.7% 100px;
+  background: #202020;
+}
+
+.equipe-fotos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 48px;
+  max-width: 1116px;
+  margin: 0 auto;
+}
+
+.equipe-foto {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.equipe-foto img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 22px;
+}
+
+@media (max-width: 800px) {
+  .equipe {
+    padding: 195px 30px 80px;
+  }
+
+  .equipe-fotos {
+    grid-template-columns: minmax(0, 350px);
+    justify-content: center;
+    gap: 64px;
+  }
+
+  .equipe-foto img {
+    border-radius: 0;
+  }
+}
