@@ -1,5 +1,4 @@
-// Primitivos de UI e ícones compartilhados pelas seções Serviços e Portfólio.
-// Este arquivo é IDÊNTICO nas duas entregas — por isso o Git junta sem conflito.
+// Primitivos de UI e ícones da seção Serviços.
 
 const propsIcone = {
   viewBox: "0 0 24 24",
@@ -10,19 +9,6 @@ const propsIcone = {
   strokeLinejoin: "round",
   "aria-hidden": true,
 };
-
-// ===== Descrição com trecho em negrito =====
-export function Descricao({ texto, negrito }) {
-  if (!negrito || !texto.includes(negrito)) return <>{texto}</>;
-  const [antes, depois] = texto.split(negrito);
-  return (
-    <>
-      {antes}
-      <strong style={{ fontWeight: 600 }}>{negrito}</strong>
-      {depois}
-    </>
-  );
-}
 
 // ===== Ícones =====
 export function IconeServico({ tipo }) {
@@ -51,18 +37,6 @@ export function IconeServico({ tipo }) {
 
 export const IconeRelogio = () => (
   <svg {...propsIcone}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
-);
-
-export const IconeAmpliar = () => (
-  <svg {...propsIcone}><path d="M15 3h6v6" /><path d="M9 21H3v-6" /><path d="M21 3l-7 7" /><path d="M3 21l7-7" /></svg>
-);
-
-export const IconeFechar = () => (
-  <svg {...propsIcone}><path d="M6 6l12 12" /><path d="M18 6L6 18" /></svg>
-);
-
-export const IconeSeta = ({ direcao }) => (
-  <svg {...propsIcone}>{direcao === "esquerda" ? <path d="M15 5l-7 7 7 7" /> : <path d="M9 5l7 7-7 7" />}</svg>
 );
 
 // ===== Ornamento do título (desktop) =====

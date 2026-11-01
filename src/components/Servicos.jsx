@@ -15,33 +15,33 @@ function Duracao({ servico }) {
   );
 }
 
-function CardServicoMobile({ s }) {
+function CardServicoMobile({ servico }) {
   return (
     <article className="ca-card ca-servico ca-servico-mobile">
-      <FundoCard src={s.imagem.mobile} alt={s.imagem.alt} veu={false} />
+      <FundoCard src={servico.imagem.mobile} alt={servico.imagem.alt} veu={false} />
       <div className="ca-card-conteudo">
-        <IconeServico tipo={s.icone} />
-        <h3 className="ca-nome ca-sombra ca-servico-nome">{s.nome}</h3>
-        <p className="ca-serif ca-desc">{s.descricao}</p>
-        <span className="ca-titulo ca-sombra ca-preco">{formatarPreco(s.preco, s.adicional)}</span>
-        <Duracao servico={s} />
+        <IconeServico tipo={servico.icone} />
+        <h3 className="ca-nome ca-sombra ca-servico-nome">{servico.nome}</h3>
+        <p className="ca-serif ca-desc">{servico.descricao}</p>
+        <span className="ca-titulo ca-sombra ca-preco">{formatarPreco(servico.preco, servico.adicional)}</span>
+        <Duracao servico={servico} />
       </div>
     </article>
   );
 }
 
-function CardServicoDesktop({ s }) {
+function CardServicoDesktop({ servico }) {
   return (
     <article className="ca-servico-coluna">
       <div className="ca-card ca-servico ca-servico-desktop">
-        <FundoCard src={s.imagem.desktop} alt={s.imagem.alt} veu={false} />
+        <FundoCard src={servico.imagem.desktop} alt={servico.imagem.alt} veu={false} />
         <div className="ca-card-conteudo">
-          <h3 className="ca-nome ca-sombra ca-servico-nome">{s.nome}</h3>
-          <p className="ca-serif ca-desc">{s.descricao}</p>
+          <h3 className="ca-nome ca-sombra ca-servico-nome">{servico.nome}</h3>
+          <p className="ca-serif ca-desc">{servico.descricao}</p>
         </div>
       </div>
-      <span className="ca-titulo ca-sombra ca-preco">{formatarPreco(s.preco, s.adicional)}</span>
-      <Duracao servico={s} />
+      <span className="ca-titulo ca-sombra ca-preco">{formatarPreco(servico.preco, servico.adicional)}</span>
+      <Duracao servico={servico} />
     </article>
   );
 }
@@ -53,8 +53,8 @@ function SecaoServicos({ desktop }) {
         <TituloSecao desktop={desktop} id="ca-titulo-servicos">NOSSOS SERVIÇOS</TituloSecao>
 
         <div className="ca-servicos">
-          {SERVICOS.map((s) =>
-            desktop ? <CardServicoDesktop key={s.id} s={s} /> : <CardServicoMobile key={s.id} s={s} />
+          {SERVICOS.map((servico) =>
+            desktop ? <CardServicoDesktop key={servico.id} servico={servico} /> : <CardServicoMobile key={servico.id} servico={servico} />
           )}
         </div>
 
