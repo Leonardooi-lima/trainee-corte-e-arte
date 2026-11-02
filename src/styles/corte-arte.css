@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lora:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap');
+
+.ca-raiz { width: 100%; min-height: 100vh; background: #1b1b1b; color: #fff; }
+.ca-raiz *, .ca-raiz *::before, .ca-raiz *::after { box-sizing: border-box; }
+
+/* Fontes */
+.ca-titulo { font-family: 'Oswald', sans-serif; }
+.ca-nome   { font-family: 'Fredoka', sans-serif; font-weight: 600; }
+.ca-serif  { font-family: 'Lora', serif; }
+.ca-sombra { text-shadow: 0 1px 3px rgba(0,0,0,.65); }
+
+/* Texto só para leitor de tela */
+.ca-sr {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Foco visível (só pelo teclado) — T10 / T14 */
+.ca-raiz :focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+/* Seções e largura do conteúdo */
+.ca-secao { padding: 56px 20px 40px; }
+.ca-conteudo { width: 100%; max-width: 448px; margin: 0 auto; }
+
+.ca-desktop .ca-secao { padding: 80px 32px 56px; }
+.ca-desktop .ca-conteudo { max-width: 1120px; }
+
+/* Títulos */
+.ca-h2 { margin: 0 0 36px; text-align: center; font-size: 30px; font-weight: 700; letter-spacing: .03em; line-height: 1.15; color: #fff; }
+.ca-titulo-desktop { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 56px; }
+.ca-titulo-desktop .ca-h2 { margin: 0; font-size: 52px; white-space: nowrap; }
+.ca-flourish { width: 170px; height: auto; color: #fff; flex-shrink: 0; }
+
+/* Card base */
+.ca-card {
+  position: relative; display: flex; overflow: hidden; border-radius: 24px;
+  border: 2px solid rgba(162,162,162,.76); /* mesma borda do Figma */
+  transition: border-color .25s ease, transform .15s ease;
+}
+.ca-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.ca-card-veu { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.82) 100%); }
+.ca-card-conteudo { position: relative; z-index: 1; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+/* Serviços */
+.ca-servicos { display: flex; flex-direction: column; gap: 32px; }
+.ca-servico-nome { margin: 0 0 8px; font-size: 30px; line-height: 1.1; color: #fff; }
+.ca-desc { margin: 0; max-width: 300px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.9); }
+.ca-preco { font-size: 30px; font-weight: 700; letter-spacing: .03em; color: #fff; }
+.ca-duracao {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
+  font-family: 'Oswald', sans-serif; font-size: 15px; letter-spacing: .06em; color: rgba(255,255,255,.75);
+}
+.ca-duracao svg { width: 16px; height: 16px; }
+
+/* Card mobile: proporção da foto do Figma (596 x 430) e cantos iguais aos dela.
+   O ::before garante a altura mínima da proporção; se o texto precisar de mais
+   espaço (celular bem estreito), o card cresce em vez de cortar o texto. */
+.ca-servico-mobile { border-radius: 7.4% / 10.2%; }
+.ca-servico-mobile::before { content: ""; flex: 0 0 0; padding-bottom: calc(430 / 596 * 100%); }
+.ca-servico-mobile .ca-card-conteudo { justify-content: center; padding: 22px 20px; }
+.ca-servico-mobile svg { width: 30px !important; height: 30px !important; }
+.ca-servico-mobile .ca-servico-nome { font-size: 28px; margin-bottom: 6px; }
+.ca-servico-mobile .ca-desc { max-width: 290px; font-size: 15px; line-height: 1.5; }
+.ca-servico-mobile .ca-preco { margin-top: 10px; font-size: 28px; line-height: 1.1; }
+.ca-servico-mobile .ca-duracao svg { width: 15px !important; height: 15px !important; }
+.ca-servico-mobile .ca-duracao { margin-top: 4px; font-size: 14px; }
+
+.ca-desktop .ca-servicos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 2.5vw, 40px); }
+.ca-servico-coluna { display: flex; flex-direction: column; align-items: center; }
+/* Card desktop: proporção da foto do Figma (606 x 800) e cantos iguais aos dela */
+.ca-servico-desktop { width: 100%; aspect-ratio: 606 / 800; border-radius: 7.4% / 5.6%; }
+.ca-servico-desktop .ca-card-conteudo { justify-content: flex-end; padding: 0 28px 36px; }
+.ca-desktop .ca-servico-nome { font-size: 36px; margin-bottom: 10px; }
+.ca-desktop .ca-desc { max-width: 270px; }
+.ca-servico-coluna .ca-preco { margin-top: 20px; font-size: 40px; line-height: 1.1; }
+.ca-servico-coluna .ca-duracao { font-size: 16px; }
+
+/* Aviso de soma dos serviços */
+.ca-aviso { margin: 40px auto 0; }
+.ca-desktop .ca-aviso { margin-top: 48px; max-width: 760px; }
+.ca-linha { height: 1px; background: rgba(255,255,255,.25); margin-bottom: 12px; }
+.ca-aviso-texto { margin: 0; padding: 0 8px; text-align: center; font-size: 12px; letter-spacing: .05em; line-height: 1.6; color: rgba(255,255,255,.7); }
+.ca-desktop .ca-aviso-texto { font-size: 14px; }
+
+/* Hover só em aparelhos com mouse (no celular não "gruda") — T10 */
+@media (hover: hover) {
+  .ca-servico:hover { border-color: rgba(230,230,230,.95); }
+  .ca-servico:hover .ca-card-img { transform: scale(1.05); }
+}
+
+/* Quem prefere menos movimento: sem animações */
+@media (prefers-reduced-motion: reduce) {
+  .ca-raiz * { transition: none !important; animation: none !important; }
+}
