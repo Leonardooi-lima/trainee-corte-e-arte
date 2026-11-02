@@ -1,6 +1,7 @@
 import Hero from './components/Hero/Hero'
 import Servicos from './components/Servicos'
 import Equipe from './components/Equipe/Equipe'
+import Avaliacoes from './components/Avaliacoes/Avaliacoes'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Hero />
       <Servicos />
       <Equipe />
+      <Avaliacoes />
     </main>
   )
 }
