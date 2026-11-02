@@ -1,13 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Cabin:ital,wght@0,400;0,500;1,600&display=swap');
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 52px;
+}
 
 html,
 body,
 #root {
   min-height: 100%;
-  margin: 0;
 }
 
 body {
+  margin: 0;
   background-color: #111;
   font-family: 'Cabin', Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
