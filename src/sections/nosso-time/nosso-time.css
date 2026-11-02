@@ -83,11 +83,6 @@
   display: block;
 }
 
-/* Foto do barber-1 — ajuste para mostrar rosto completo */
-.nosso-time__foto--barber1 {
-  object-position: 50% 25%;
-}
-
 /* Mobile — frame das fotografias */
 @media (max-width: 1023px) {
   .nosso-time__foto {

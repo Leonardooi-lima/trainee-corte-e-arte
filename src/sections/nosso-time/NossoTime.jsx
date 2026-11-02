@@ -1,7 +1,7 @@
 import './nosso-time.css';
-import barber1 from './assets/barber-1.jpg';
-import barber2 from './assets/barber-2.jpg';
-import barber3 from './assets/barber-3.jpg';
+import barber1 from './assets/barber-1.webp';
+import barber2 from './assets/barber-2.webp';
+import barber3 from './assets/barber-3.webp';
 
 const PROFISSIONAIS = [
   {
@@ -35,7 +35,9 @@ export default function NossoTime() {
               <img
                 src={prof.foto}
                 alt={prof.nome}
-                className={`nosso-time__foto ${i === 0 ? 'nosso-time__foto--barber1' : ''}`}
+                className="nosso-time__foto"
+                loading="lazy"
+                decoding="async"
               />
               <h3 className="nosso-time__nome">{prof.nome}</h3>
               <p className="nosso-time__especialidade">{prof.especialidade}</p>
