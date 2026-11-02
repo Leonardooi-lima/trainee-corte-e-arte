@@ -1,13 +1,17 @@
 import { useRef } from 'react'
-import { useEhDesktop } from '../hooks/useEhDesktop.js'
-import { SERVICOS, formatarPreco, formatarDuracao } from '../data/servicos.js'
+import { useEhDesktop } from '../../hooks/useEhDesktop.js'
+import {
+  SERVICOS,
+  formatarPreco,
+  formatarDuracao,
+} from '../../data/servicos.js'
 import {
   IconeServico,
   IconeRelogio,
   FundoCard,
   TituloSecao,
-} from './corteArte/ui.jsx'
-import '../styles/corte-arte.css'
+} from '../corteArte/ui.jsx'
+import '../../styles/corte-arte.css'
 
 // Duração estimada (T08)
 function Duracao({ servico }) {

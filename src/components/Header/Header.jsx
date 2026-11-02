@@ -1,8 +1,11 @@
 import whatsappIcon from '../../assets/whatsapp.png'
 import logo from '../../assets/logos/logo-header.png'
+import { linkWhatsApp } from '../../lib/whatsapp.js'
 import './Header.css'
 
 export default function Header() {
+  const whatsapp = linkWhatsApp()
+
   return (
     <header className="header">
       <a className="logo" href="#inicio" aria-label="Corte & Arte - início">
@@ -13,10 +16,17 @@ export default function Header() {
         <a href="#servicos">Serviços</a>
         <a href="#sobre-nos">Sobre</a>
         <a href="#avaliacoes">Avaliações</a>
-        <a href="#contato">Contato</a>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+          Contato
+        </a>
       </nav>
 
-      <a className="header-cta" href="#contato">
+      <a
+        className="header-cta"
+        href={whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Agende já
         <img src={whatsappIcon} alt="" />
       </a>
@@ -31,7 +41,9 @@ export default function Header() {
           <a href="#servicos">Serviços</a>
           <a href="#sobre-nos">Sobre</a>
           <a href="#avaliacoes">Avaliações</a>
-          <a href="#contato">Contato</a>
+          <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+            Contato
+          </a>
         </nav>
       </details>
     </header>

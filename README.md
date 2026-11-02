@@ -1,34 +1,40 @@
 # Corte & Arte
 
-Site institucional responsivo para uma barbearia e salão de beleza, desenvolvido pelo **Grupo 1** durante o case Trainee da CodeTech Jr.
+Site institucional responsivo (mobile first) para uma barbearia, desenvolvido
+pelo **Grupo 1** durante o case Trainee da CodeTech Jr.
 
-# Sobre o projeto
+> **Protótipo de frontend.** Não há banco de dados, autenticação nem backend.
+> **Não existem reservas reais** e **não há um número de WhatsApp fixo**: o botão
+> "Agende já" apenas abre o WhatsApp com uma mensagem pronta (veja
+> [Configuração opcional](#configuração-opcional-telefone-do-whatsapp)).
 
-O objetivo é desenvolvdr um site moderno, acessível e responsivo, permitindo que os clientes conheçam os serviçõs, a equipe e entrem em contato para agendar serviços.
+## Sobre o projeto
 
-O projeto é exclusivamente frontend. Não utilizamos banco de dados autenticação ou backend.
+O objetivo é um site moderno, acessível e responsivo onde o cliente conhece os
+serviços, o portfólio e a equipe, e inicia um contato pelo WhatsApp. Seções:
 
-# Tecnologias utilizamos
+- **Hero** — chamada principal com vídeo de fundo.
+- **Nossos Serviços** — cards de serviços com preço e duração.
+- **Portfólio** — grade (desktop) ou carrossel (mobile) com lightbox acessível.
+- **Sobre Nós** — diferenciais da barbearia.
+- **Nosso Time** — profissionais.
 
-- React
-- JavaScript
-- Vite
-- HTML5 e CSS3
-- Eslint
-- Git e Github
-- Figma
+## Tecnologias
 
-## Como executar o projeto
+- React 19
+- Vite 8
+- JavaScript (ES Modules)
+- HTML5 e CSS3 (CSS puro, sem frameworks de estilo)
+- ESLint + Prettier
+- Git e GitHub / Figma
 
-### Pré-requisitos
-
-Antes de começar, tenha instalado:
+## Pré-requisitos
 
 - Git
-- Node.js 20.19+ ou uma versão mais recente, que seja compativel com o Vite
+- Node.js **20.19+** (ou mais recente; o projeto foi testado no Node 22)
 - npm
 
-para conferir as versões:
+Para conferir as versões:
 
 ```bash
 node -v
@@ -36,104 +42,146 @@ npm -v
 git --version
 ```
 
-### 1. Clone o repositorio
+## Como executar
 
 ```bash
+# 1. Clone o repositório
 git clone https://github.com/Leonardooi-lima/trainee-corte-e-arte
-```
 
-### 2. Entre na pasta
-
-```bash
+# 2. Entre na pasta
 cd trainee-corte-e-arte
-```
 
-### 3. Instale as dependencias
-
-```bash
-
+# 3. Instale as dependências (usa o package-lock.json)
 npm ci
-```
 
-### 4. Execute o projeto
-
-```bash
+# 4. Rode em modo de desenvolvimento
 npm run dev
 ```
 
-Abra o endereço informado pelo terminal, normalmente:
+Abra o endereço mostrado no terminal (normalmente http://localhost:5173/).
 
-http://localhost:5173/
+## Scripts disponíveis
 
-### Formatação do código
+| Comando                | O que faz                                        |
+| ---------------------- | ------------------------------------------------ |
+| `npm run dev`          | Sobe o servidor de desenvolvimento (hot reload). |
+| `npm run build`        | Gera a versão de produção em `dist/`.            |
+| `npm run preview`      | Serve localmente o conteúdo de `dist/`.          |
+| `npm run lint`         | Roda o ESLint.                                   |
+| `npm run format`       | Formata todo o projeto com o Prettier.           |
+| `npm run format:check` | Só verifica a formatação (não altera arquivos).  |
 
-Para formatar automaticamente todo o projeto no padrão definido em
-`.prettierrc.json`:
+## Configuração opcional: telefone do WhatsApp
+
+Por padrão **não há número fixo**: "Agende já" e "Contato" abrem o WhatsApp com
+uma mensagem pronta e deixam a pessoa escolher o contato.
+
+Para apontar a um número fixo (ex.: em uma demonstração), crie um arquivo `.env`
+na raiz a partir do exemplo e preencha só os dígitos (DDI + DDD + número):
 
 ```bash
-npm run format
+cp .env.example .env
 ```
 
-Para apenas verificar se os arquivos estão formatados, sem alterá-los:
-
-```bash
-npm run format:check
+```env
+# .env
+VITE_WHATSAPP_TELEFONE=5514999999999
 ```
 
-## Fluxo de trabalho com o Git
+O `.env` é ignorado pelo Git. Se a variável ficar vazia, o comportamento padrão
+(sem contato fixo) continua valendo.
 
-Para evitar conflitos, cada funcionalidade deverá ser desenvolvida em uma branch separada.
+## Estrutura de pastas
 
-**Não desenvolva diretamente na branch 'main'.**
+```
+src/
+  components/
+    <Secao>/<Secao>.jsx + <Secao>.css   # Header, Hero, Servicos, Portfolio, SobreNos, Equipe
+    corteArte/ui.jsx                     # ícones e primitivos de UI compartilhados
+  data/                                  # conteúdo editável das seções
+    servicos.js
+    portfolio.js
+  hooks/useEhDesktop.js                  # decide mobile/desktop por largura (ResizeObserver)
+  lib/whatsapp.js                        # monta o link do WhatsApp
+  styles/corte-arte.css                  # estilos de Serviços e Portfólio
+  assets/                                # imagens importadas pelo JS (equipe, logos, portfólio, serviços)
+public/                                  # imagens e vídeos servidos como estáticos (hero)
+```
 
-### Atualize sua main
+Cada seção fica em sua própria pasta dentro de `components/`, no padrão
+`NomeDaSecao/NomeDaSecao.jsx`.
 
-Sempre antes de começar uma nova tarefa:
+## Organização dos dados
+
+O conteúdo das seções fica separado do visual, em `src/data/`. Para mudar
+textos, preços ou fotos, edite esses arquivos (não os componentes):
+
+- **`src/data/servicos.js`** — lista `SERVICOS`. Cada item tem `id`, `nome`,
+  `descricao`, `preco`, `duracaoMin`, `adicional`, `icone` e `imagem`
+  (`mobile`, `desktop`, `alt`). As imagens são importadas de
+  `src/assets/servicos/`.
+- **`src/data/portfolio.js`** — lista `PORTFOLIO`, na ordem do Figma. Cada item
+  tem `id`, `titulo`, `descricao`, um `negrito` opcional (trecho destacado da
+  descrição) e `imagem` (`src`, `alt`). As imagens vêm de
+  `src/assets/portfolio/`.
+
+Sempre preencha o `alt` das imagens (acessibilidade).
+
+## Origem das imagens e ícones
+
+Ícones da seção **Sobre Nós** (Flaticon):
+
+- Navalha — "Barber icons created by surang": https://www.flaticon.com/free-icons/barber
+- Cadeira — "Barber-chair icons created by surang": https://www.flaticon.com/free-icons/barber-chair
+- Estilista — "Barber shop icons created by Magnific": https://www.flaticon.com/free-icons/barber-shop
+
+> As fotos de serviços, portfólio e equipe e o vídeo do hero vieram do design do
+> projeto no Figma. Quem adicionou cada arquivo deve registrar aqui o link de
+> origem e a licença antes da entrega final (campo a preencher).
+
+Referência de design (Figma):
+https://www.figma.com/site/cvWacd0fmrb2mX4AeP9WEq/CORTE---ARTE
+
+## Demonstração
+
+1. `npm ci` e `npm run dev`.
+2. Abra o site e reduza/aumente a janela para ver a troca mobile/desktop.
+3. No **Portfólio**, abra uma foto (clique, `Enter` ou toque) para ver o
+   lightbox; navegue com as setas do teclado e feche com `Esc`.
+4. Clique em **"Agende já"** para ver o redirecionamento ao WhatsApp.
+
+Lembre: é uma demonstração de frontend — **sem reservas reais e sem WhatsApp
+fixo** (salvo se você configurar o `.env`).
+
+## Limitações conhecidas
+
+- Sem backend, autenticação ou persistência.
+- A âncora "Avaliações" do menu ainda não tem seção (vive na branch
+  `US07/Avaliacoesedepoimentosinterativos`, a integrar).
+- Detalhes do checklist de testes em [`docs/CHECKLIST-TESTES.md`](docs/CHECKLIST-TESTES.md).
+
+## Fluxo de trabalho com Git
+
+Cada funcionalidade é desenvolvida em uma branch separada.
+**Não desenvolva direto na `main`.**
 
 ```bash
+# Antes de começar uma tarefa, atualize a main
 git switch main
 git pull origin main
-```
 
-### Criando uma branch
-
-```bash
-
+# Crie sua branch
 git switch -c feat/nome-da-secao
-```
 
-### Commitando sua tarefa
+# Trabalhe, formate e confira
+npm run format
+npm run lint
 
-Para visualizar todos os arquivos que não foram commitados:
-
-```bash
-git status
-```
-
-Adicione os arquivos desejados:
-
-```bash
+# Commite e envie
 git add .
+git commit -m "feat: descreve a mudança"
+git push -u origin feat/nome-da-secao
 ```
 
-Crie um commit:
-
-```bash
-git commit -m "feat: adiciona seção de serviços"
-```
-
-Enviando o commit para sua branch:
-
-```bash
-git push
-```
-
-## Quando pronto, crie um Pull request para a branch main
-
-1. Acesse o repositorio no Github.
-2. Entre na aba **Pull requests**
-3. Clique em **New pull request**
-4. Selecione 'main' como destino (base)
-5. Selcione sua branch como origem (compare).
-6. Adicione um titulo e uma descrição das alterações, também consegue adicionar alguem para revisar.
-7. Clique em **Create pull request**.
+Depois, abra um **Pull Request** no GitHub com a `main` como base e sua branch
+como origem, descrevendo as alterações e marcando alguém para revisar.
