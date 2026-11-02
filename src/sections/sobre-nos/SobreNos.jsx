@@ -33,10 +33,10 @@ export default function SobreNos() {
       <div className="sobre-nos__container">
         <div className="sobre-nos__content">
           <span className="sobre-nos__label">— SOBRE NÓS</span>
-          <h1 className="sobre-nos__title">
+          <h2 className="sobre-nos__title">
             Mais que um corte.<br />
             Uma experiência.
-          </h1>
+          </h2>
           <p className="sobre-nos__text">
             Acreditamos que cuidar da aparência vai além do espelho. Unimos
             técnica, atenção aos detalhes e um ambiente acolhedor para
