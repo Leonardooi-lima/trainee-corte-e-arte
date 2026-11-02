@@ -21,14 +21,15 @@
   display: flex;
   flex: none;
   gap: 20px;
+  animation: mover-cards 24s linear infinite;
 }
 
 .avaliacoes-fileira-esquerda {
-  transform: translateX(-148px);
+  margin-left: -148px;
 }
 
 .avaliacoes-fileira-direita {
-  transform: translateX(348px);
+  margin-left: -194px;
 }
 
 .avaliacoes-card {
@@ -38,6 +39,17 @@
   height: 143px;
   border-radius: 7px;
   background: #202020;
+}
+
+/* sisteminha para ocards tentarem se mexer */
+@keyframes mover-cards {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-2168px);
+  }
 }
 
 @media (width <= 800px) {
@@ -68,5 +80,11 @@
     border: 1px solid #d5d5d5;
     border-radius: 10px;
     background: #202020;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avaliacoes-fileira {
+    animation: none;
   }
 }

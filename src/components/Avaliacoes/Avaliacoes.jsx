@@ -9,15 +9,28 @@ export default function Avaliacoes() {
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
         </div>
 
         <div className="avaliacoes-fileira avaliacoes-fileira-direita">
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
         </div>
 
         <div className="avaliacoes-fileira avaliacoes-fileira-esquerda">
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
+          <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
           <div className="avaliacoes-card" />
