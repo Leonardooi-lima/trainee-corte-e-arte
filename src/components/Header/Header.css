@@ -1,9 +1,10 @@
 .header {
     position: -webkit-sticky;
     position: sticky;
-    min-height: 65px;
+    min-height: 52px;
     width: 100%;
-    padding-inline: max(24px, calc(50% - 640px));
+    box-sizing: border-box;
+    padding-inline: 16px;
     top: 0;
     z-index: 1000;
     display: flex;
@@ -14,14 +15,15 @@
 }
 
 .logo {
-  font-family: 'Antonio', sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  display: block;
+  flex-shrink: 0;
+  width: 78px;
 }
 
-.logo span {
-  color: #d7a45a;
+.logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .main-nav {
@@ -38,6 +40,12 @@
 .main-nav a:hover {
   text-decoration: none;
   color: #fff;
+}
+
+.desktop-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .header-cta{
@@ -72,13 +80,12 @@
   display: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .header {
     justify-content: flex-start;
     gap: 8px;
   }
 
-  /* troca o menu para o celular */
   .desktop-nav {
     display: none;
   }
@@ -94,7 +101,6 @@
   }
 
   .menu-toggle {
-    /* desenha o icone do botao */
     display: flex;
     flex-direction: column;
     justify-content: center;

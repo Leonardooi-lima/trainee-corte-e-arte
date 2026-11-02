@@ -1,21 +1,22 @@
 import whatsappIcon from '../../assets/whatsapp.png'
+import logo from '../../assets/logos/logo-header.png'
 import './Header.css'
 
 export default function Header() {
   return (
     <header className="header">
       <a className="logo" href="#inicio" aria-label="Corte & Arte - início">
-        CORTE & ARTE
+        <img className="logo-image" src={logo} alt="Corte & Arte" />
       </a>
 
       <nav className="main-nav desktop-nav" aria-label="Navegação">
         <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#sobre-nos">Sobre</a>
         <a href="#avaliacoes">Avaliações</a>
         <a href="#contato">Contato</a>
       </nav>
 
-      <a className="header-cta" href="agendamento">
+      <a className="header-cta" href="#contato">
         Agende já
         <img src={whatsappIcon} alt="" />
       </a>
@@ -28,7 +29,7 @@ export default function Header() {
         </summary>
         <nav className="main-nav" aria-label="Navegação">
           <a href="#servicos">Serviços</a>
-          <a href="#sobre">Sobre</a>
+          <a href="#sobre-nos">Sobre</a>
           <a href="#avaliacoes">Avaliações</a>
           <a href="#contato">Contato</a>
         </nav>
