@@ -105,7 +105,7 @@ function CarrosselPortfolio({
             <button
               key={f.id}
               type="button"
-              ref={(el) => (refsSlides.current[i] = el)}
+              ref={(el) => { refsSlides.current[i] = el; }}
               className="ca-carrossel-slide"
               tabIndex={i === index ? 0 : -1}
               aria-hidden={i !== index}
@@ -399,7 +399,7 @@ function SecaoPortfolio({ desktop }) {
               <li key={item.id} className="ca-grade-item">
                 <CardFoto
                   item={item}
-                  refBotao={(el) => (refsGatilho.current[i] = el)}
+                  refBotao={(el) => { refsGatilho.current[i] = el; }}
                   aoAbrir={() => abrirModal(i)}
                 />
               </li>

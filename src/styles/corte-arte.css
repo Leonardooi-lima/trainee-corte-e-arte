@@ -562,15 +562,14 @@
 .ca-modal-imagem img {
   display: block;
   width: auto;
-  height: auto;
   max-width: 100%;
-  max-height: max(240px, calc(100vh - 260px));
+  height: max(240px, calc(100vh - 260px));
   object-fit: contain;
   border-radius: 16px;
 }
 @supports (height: 100dvh) {
   .ca-modal-imagem img {
-    max-height: max(240px, calc(100dvh - 260px));
+    height: max(240px, calc(100dvh - 260px));
   }
 }
 .ca-modal-legenda {
