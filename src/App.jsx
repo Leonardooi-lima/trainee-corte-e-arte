@@ -5,6 +5,7 @@ import Equipe from './components/Equipe/Equipe'
 import Avaliacoes from './components/Avaliacoes/Avaliacoes'
 import SobreNos from './sections/sobre-nos/SobreNos'
 import Portfolio from './components/Portfolio.jsx'
+import Localizacao from './components/Localizacao/Localizacao'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <SobreNos />
         <Equipe />
         <Avaliacoes />
+        <Localizacao />
       </main>
     </>
   )
