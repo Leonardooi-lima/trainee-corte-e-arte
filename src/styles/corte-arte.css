@@ -177,12 +177,12 @@
 .ca-modal-botao:disabled { opacity: .3; cursor: not-allowed; }
 .ca-modal-imagem { width: 100%; display: flex; justify-content: center; touch-action: pan-y; user-select: none; }
 .ca-modal-imagem img {
-  display: block; width: auto; height: auto; max-width: 100%;
-  max-height: max(240px, calc(100vh - 260px));
+  display: block; width: auto; max-width: 100%;
+  height: max(240px, calc(100vh - 260px));
   object-fit: contain; border-radius: 16px;
 }
 @supports (height: 100dvh) {
-  .ca-modal-imagem img { max-height: max(240px, calc(100dvh - 260px)); }
+  .ca-modal-imagem img { height: max(240px, calc(100dvh - 260px)); }
 }
 .ca-modal-legenda { max-width: 440px; text-align: center; }
 .ca-modal-legenda h3 { margin: 0 0 6px; font-size: 26px; font-weight: 500; }
