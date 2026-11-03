@@ -1,7 +1,7 @@
 .avaliacoes {
   position: relative;
   box-sizing: border-box;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   padding: 280px 0 138px;
   background:
@@ -173,14 +173,13 @@
 }
 
 .avaliacoes-botao-google {
-  position: absolute;
-  bottom: 11px;
-  left: 50%;
+  position: relative;
   z-index: 3;
   display: flex;
   box-sizing: border-box;
   width: 470px;
   height: 66px;
+  margin: 130px auto 0;
   align-items: center;
   justify-content: center;
   gap: 30px;
@@ -190,7 +189,6 @@
   font-family: 'Cabin', Arial, sans-serif;
   font-size: 29px;
   text-decoration: none;
-  transform: translateX(-50%);
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
@@ -198,7 +196,7 @@
 
 .avaliacoes-botao-google:hover {
   background: #fff;
-  transform: translateX(-50%) translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .avaliacoes-botao-google:focus-visible {
@@ -224,7 +222,7 @@
 
 @media (width <= 800px) {
   .avaliacoes {
-    height: 100vh;
+    min-height: 100vh;
     padding: 134px 11px 76px;
     background:
       linear-gradient(180deg, #202020 0, #292929 72px, #292929 100%);
@@ -278,7 +276,6 @@
   }
 
   .avaliacoes-botao-google {
-    bottom: 76px;
     width: 146px;
     height: 31px;
     gap: 8px;
