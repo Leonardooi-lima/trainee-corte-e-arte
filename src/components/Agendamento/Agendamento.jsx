@@ -162,6 +162,14 @@ export default function Agendamento({ servicoInicial, profissionalInicial }) {
                 <option key={h} value={h}>{h}</option>
               ))}
             </select>
+            {horario && (
+              <span className="agendamento-horario-selecionado">
+                Hor\u00e1rio selecionado: {horario}
+              </span>
+            )}
+            <p className="agendamento-aviso-horario">
+              Os hor\u00e1rios apresentados s\u00e3o ilustrativos e n\u00e3o representam\u00a0uma reserva confirmada.
+            </p>
           </div>
 
           <button type="submit" className="agendamento-botao" disabled={!completo}>

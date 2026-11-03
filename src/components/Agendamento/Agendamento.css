@@ -187,6 +187,32 @@
   outline-offset: 2px;
 }
 
+/* Chip de horário selecionado */
+.agendamento-horario-selecionado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+/* Aviso de horários demonstrativos */
+.agendamento-aviso-horario {
+  margin: 8px 0 0;
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+
 /* Desktop — breakpoint 1024px (conforme useEhDesktop) */
 @media (min-width: 1024px) {
   .agendamento {
