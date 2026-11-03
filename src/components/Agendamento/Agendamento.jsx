@@ -22,18 +22,27 @@ export default function Agendamento({ servicoInicial, profissionalInicial }) {
 
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
-  const [servico, setServico] = useState(servicoInicial || '')
-  const [profissional, setProfissional] = useState(profissionalInicial || '')
   const [data, setData] = useState('')
   const [horario, setHorario] = useState('')
 
   const hoje = new Date().toISOString().split('T')[0]
 
+  // Estado local dos campos. As pré-seleções de servicoInicial e
+  // profissionalInicial (vindas dos cards US03/US06) têm precedência quando
+  // fornecidas, permitindo que o usuário continue alterando livremente.
+  const [servicoLocal, setServicoLocal] = useState(servicoInicial || '')
+  const [profissionalLocal, setProfissionalLocal] = useState(
+    profissionalInicial || ''
+  )
+
+  const servicoExibido = servicoInicial || servicoLocal
+  const profissionalExibido = profissionalInicial || profissionalLocal
+
   const completo =
     nome &&
     telefone &&
-    servico &&
-    profissional &&
+    servicoExibido &&
+    profissionalExibido &&
     data &&
     horario
 
@@ -91,8 +100,8 @@ export default function Agendamento({ servicoInicial, profissionalInicial }) {
             <select
               id="agendamento-servico"
               className="agendamento-select"
-              value={servico}
-              onChange={(e) => setServico(e.target.value)}
+              value={servicoExibido}
+              onChange={(e) => setServicoLocal(e.target.value)}
               required
               aria-required="true"
             >
@@ -110,8 +119,8 @@ export default function Agendamento({ servicoInicial, profissionalInicial }) {
             <select
               id="agendamento-profissional"
               className="agendamento-select"
-              value={profissional}
-              onChange={(e) => setProfissional(e.target.value)}
+              value={profissionalExibido}
+              onChange={(e) => setProfissionalLocal(e.target.value)}
               required
               aria-required="true"
             >
