@@ -1,0 +1,229 @@
+/* Agendamento — mobile first */
+/* Prefixo: agendamento- para evitar colisão com outras seções */
+
+.agendamento {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 56px 20px 40px;
+  background: #1b1b1b;
+  color: #fff;
+}
+
+.agendamento *,
+.agendamento *::before,
+.agendamento *::after {
+  box-sizing: border-box;
+}
+
+.agendamento-conteudo {
+  width: 100%;
+  max-width: 448px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+}
+
+.agendamento-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.agendamento-titulo {
+  margin: 0;
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.agendamento-subtitulo {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  text-align: center;
+}
+
+/* Imagem ilustrativa (placeholder — substituir por asset real quando disponível) */
+.agendamento-imagem {
+  width: 100%;
+  height: 260px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.agendamento-imagem-placeholder {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at 70% 70%,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 40%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Formulário */
+.agendamento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.agendamento-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+}
+
+.agendamento-label {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.agendamento-input,
+.agendamento-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.agendamento-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.agendamento-select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.agendamento-select::-ms-expand {
+  display: none;
+}
+
+.agendamento-input:focus,
+.agendamento-select:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+/* Botão principal */
+.agendamento-botao {
+  margin-top: 4px;
+  padding: 14px 24px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #111111;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.agendamento-botao:hover:not(:disabled) {
+  background: #f5f5f5;
+}
+
+.agendamento-botao:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.agendamento-botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estados de interação visual */
+.agendamento-input:focus-visible,
+.agendamento-select:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Desktop — breakpoint 1024px (conforme useEhDesktop) */
+@media (min-width: 1024px) {
+  .agendamento {
+    padding: 80px 32px 56px;
+  }
+
+  .agendamento-conteudo {
+    max-width: 1120px;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .agendamento-texto {
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+  }
+
+  .agendamento-subtitulo {
+    text-align: left;
+  }
+
+  .agendamento-imagem {
+    width: 320px;
+    height: 420px;
+    flex-shrink: 0;
+  }
+
+  .agendamento-form {
+    flex: 1;
+    max-width: 448px;
+  }
+
+  .agendamento-botao {
+    width: auto;
+    padding: 14px 28px;
+  }
+}
