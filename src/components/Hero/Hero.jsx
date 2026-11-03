@@ -1,10 +1,10 @@
-import logo from "../../assets/logos/logo-corte-arte.webp";
-import "./Hero.css";
+import logo from '../../assets/logos/logo-corte-arte.webp'
+import './Hero.css'
 
 export default function Hero() {
   const reduzirMovimento =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   return (
     <section className="hero" id="inicio">
@@ -47,7 +47,8 @@ export default function Hero() {
 
         <div className="texto-hero">
           <p>
-            Na barbearia Corte &amp; Arte você encontra um atendimento especializado,
+            Na barbearia Corte &amp; Arte você encontra um atendimento
+            especializado,
             <br />
             ambiente moderno e profissionais que transformam
             <br />
@@ -61,5 +62,5 @@ export default function Hero() {
         <span aria-hidden="true" />
       </a>
     </section>
-  );
+  )
 }
