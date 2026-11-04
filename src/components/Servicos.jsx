@@ -67,7 +67,7 @@ function SecaoServicos({ desktop }) {
   return (
     <section
       id="servicos"
-      className="ca-secao"
+      className="ca-secao ca-secao-servicos"
       aria-labelledby="ca-titulo-servicos"
     >
       <div className="ca-conteudo">

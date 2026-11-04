@@ -1,12 +1,18 @@
 import whatsappIcon from '../../assets/whatsapp.png'
-import logo from '../../assets/logos/logo-header.png'
+import logo from '../../assets/logos/logo-header-mini.svg'
 import './Header.css'
 
 export default function Header() {
   return (
     <header className="header">
       <a className="logo" href="#inicio" aria-label="Corte & Arte - início">
-        <img className="logo-image" src={logo} alt="Corte & Arte" />
+        <img
+          className="logo-image"
+          src={logo}
+          alt="Corte & Arte"
+          width="402"
+          height="125"
+        />
       </a>
 
       <nav className="main-nav desktop-nav" aria-label="Navegação">

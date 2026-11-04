@@ -293,7 +293,12 @@ function SecaoPortfolio({ desktop }) {
   return (
     <section className="ca-secao ca-secao-portfolio" aria-labelledby="ca-titulo-portfolio">
       <div className="ca-conteudo">
-        <TituloSecao desktop={desktop} id="ca-titulo-portfolio">PORTFÓLIO</TituloSecao>
+        <TituloSecao
+          desktop={desktop}
+          id="ca-titulo-portfolio"
+        >
+          PORTFÓLIO
+        </TituloSecao>
 
         {desktop ? (
           <ul className="ca-grade-portfolio" role="list">

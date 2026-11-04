@@ -6,6 +6,7 @@ import Avaliacoes from './components/Avaliacoes/Avaliacoes'
 import SobreNos from './sections/sobre-nos/SobreNos'
 import Portfolio from './components/Portfolio.jsx'
 import Localizacao from './components/Localizacao/Localizacao'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Avaliacoes />
         <Localizacao />
       </main>
+      <Footer />
     </>
   )
 }
