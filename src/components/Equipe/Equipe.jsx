@@ -1,6 +1,6 @@
-import alexandre from '../../assets/equipe/alexandre.png'
-import luan from '../../assets/equipe/luan.png'
-import caua from '../../assets/equipe/caua.png'
+import alexandre from '../../assets/equipe/alexandre.webp'
+import luan from '../../assets/equipe/luan.webp'
+import caua from '../../assets/equipe/caua.webp'
 import './Equipe.css'
 
 const profissionais = [

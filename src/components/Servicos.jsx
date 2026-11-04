@@ -78,9 +78,15 @@ function SecaoServicos({ desktop }) {
         <div className="ca-servicos">
           {SERVICOS.map((servico) =>
             desktop ? (
-              <CardServicoDesktop key={servico.id} servico={servico} />
+              <CardServicoDesktop
+                key={servico.id}
+                servico={servico}
+              />
             ) : (
-              <CardServicoMobile key={servico.id} servico={servico} />
+              <CardServicoMobile
+                key={servico.id}
+                servico={servico}
+              />
             ),
           )}
         </div>

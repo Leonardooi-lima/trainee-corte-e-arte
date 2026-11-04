@@ -1,0 +1,383 @@
+/* Agendamento — mobile first */
+/* Prefixo: agendamento- para evitar colisão com outras seções */
+
+.agendamento {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 56px 20px 40px;
+  background: #1b1b1b;
+  color: #fff;
+}
+
+.agendamento *,
+.agendamento *::before,
+.agendamento *::after {
+  box-sizing: border-box;
+}
+
+.agendamento-conteudo {
+  width: 100%;
+  max-width: 448px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  text-align: center;
+}
+
+.agendamento-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.agendamento-titulo {
+  margin: 0;
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.agendamento-subtitulo {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  text-align: center;
+}
+
+/* Imagem ilustrativa */
+.agendamento-imagem {
+  width: 100%;
+  height: 260px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.agendamento-imagem-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Formulário */
+.agendamento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.agendamento-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+}
+
+.agendamento-label {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.agendamento-input,
+.agendamento-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.agendamento-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.agendamento-select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.agendamento-select::-ms-expand {
+  display: none;
+}
+
+.agendamento-input:focus,
+.agendamento-select:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+
+/* Botão principal */
+.agendamento-botao {
+  margin-top: 4px;
+  padding: 14px 24px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #111111;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.agendamento-botao:hover:not(:disabled) {
+  background: #f5f5f5;
+}
+
+.agendamento-botao:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.agendamento-botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Estados de interação visual */
+.agendamento-input:focus-visible,
+.agendamento-select:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Estados de erro */
+.agendamento-input-erro,
+.agendamento-select-erro {
+  border-color: rgba(255, 90, 90, 0.8);
+}
+
+.agendamento-input-erro:focus,
+.agendamento-select-erro:focus {
+  border-color: rgba(255, 90, 90, 1);
+}
+
+/* Mensagem de erro */
+.agendamento-erro {
+  display: block;
+  margin-top: 4px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 90, 90, 0.9);
+}
+
+/* Chip de horário selecionado */
+.agendamento-horario-selecionado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+
+/* Aviso de horários demonstrativos */
+.agendamento-aviso-horario {
+  margin: 8px 0 0;
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+}
+
+/* Seção de prévia */
+.agendamento-previa {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.agendamento-previa-titulo {
+  margin: 0 0 8px;
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.agendamento-previa-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.agendamento-previa-label {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.agendamento-previa-valor {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: #fff;
+}
+
+.agendamento-previa-aviso {
+  margin: 16px 0 0;
+  padding: 12px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.agendamento-previa-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.agendamento-botao-whatsapp {
+  text-decoration: none;
+  text-align: center;
+  background: #ffffff;
+  color: #111111;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.agendamento-botao-whatsapp:hover {
+  background: #f5f5f5;
+}
+
+.agendamento-botao-copiar {
+  padding: 12px 24px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.agendamento-botao-copiar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.agendamento-botao-copiar:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.agendamento-botao-editar {
+  padding: 12px 24px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.agendamento-botao-editar:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #fff;
+  color: #fff;
+}
+
+.agendamento-botao-editar:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Desktop — breakpoint 1024px (conforme useEhDesktop) */
+@media (min-width: 1024px) {
+  .agendamento {
+    padding: 80px 32px 56px;
+  }
+
+  .agendamento-conteudo {
+    max-width: 1120px;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .agendamento-texto {
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+  }
+
+  .agendamento-subtitulo {
+    text-align: left;
+  }
+
+  .agendamento-imagem {
+    width: 286px;
+    height: 540px;
+    flex-shrink: 0;
+  }
+
+  .agendamento-form,
+  .agendamento-previa {
+    flex: 1;
+    max-width: 448px;
+  }
+
+  .agendamento-botao {
+    width: auto;
+    padding: 14px 28px;
+  }
+
+  .agendamento-previa-acoes .agendamento-botao {
+    width: 100%;
+  }
+}

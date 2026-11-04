@@ -22,7 +22,7 @@ export default function Header() {
         <a href="#contato">Contato</a>
       </nav>
 
-      <a className="header-cta" href="#contato">
+      <a className="header-cta" href="#agendamento">
         Agende já
         <img src={whatsappIcon} alt="" />
       </a>
