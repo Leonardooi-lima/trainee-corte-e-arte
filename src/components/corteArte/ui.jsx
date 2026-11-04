@@ -8,7 +8,6 @@ import setaEsquerdaIcon from '../../assets/icones/seta-esquerda.svg'
 import setaDireitaIcon from '../../assets/icones/seta-direita.svg'
 import ornamento from '../../assets/icones/ornamento-portfolio.svg'
 
-
 export function Descricao({ texto, negrito }) {
   if (!negrito || !texto.includes(negrito)) return <>{texto}</>
   const [antes, depois] = texto.split(negrito)
@@ -47,7 +46,6 @@ export function IconeSeta({ direcao }) {
   const icone = direcao === 'esquerda' ? setaEsquerdaIcon : setaDireitaIcon
   return <img src={icone} alt="" draggable={false} />
 }
-
 
 export function Flourish({ espelhado, src = ornamento }) {
   return (

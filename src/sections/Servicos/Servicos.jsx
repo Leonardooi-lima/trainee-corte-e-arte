@@ -1,13 +1,17 @@
 import { useRef } from 'react'
-import { useEhDesktop } from '../hooks/useEhDesktop.js'
-import { SERVICOS, formatarPreco, formatarDuracao } from '../data/servicos.js'
+import { useEhDesktop } from '../../hooks/useEhDesktop.js'
+import {
+  SERVICOS,
+  formatarPreco,
+  formatarDuracao,
+} from '../../data/servicos.js'
 import {
   IconeServico,
   IconeRelogio,
   FundoCard,
   TituloSecao,
-} from './corteArte/ui.jsx'
-import '../styles/corte-arte.css'
+} from '../../components/corteArte/ui.jsx'
+import '../../styles/corte-arte.css'
 
 // Duração estimada (T08)
 function Duracao({ servico }) {
@@ -78,15 +82,9 @@ function SecaoServicos({ desktop }) {
         <div className="ca-servicos">
           {SERVICOS.map((servico) =>
             desktop ? (
-              <CardServicoDesktop
-                key={servico.id}
-                servico={servico}
-              />
+              <CardServicoDesktop key={servico.id} servico={servico} />
             ) : (
-              <CardServicoMobile
-                key={servico.id}
-                servico={servico}
-              />
+              <CardServicoMobile key={servico.id} servico={servico} />
             ),
           )}
         </div>

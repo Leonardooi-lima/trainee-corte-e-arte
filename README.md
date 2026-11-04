@@ -1,16 +1,12 @@
 # Corte & Arte
 
-Site institucional responsivo para uma barbearia e salão de beleza,
-desenvolvido pelo **Grupo 1** durante o case Trainee da CodeTech Jr.
+Site institucional responsivo para uma barbearia e salão de beleza,desenvolvido pelo **Grupo 1** durante o case Trainee da CodeTech Jr.
 
 ## Sobre o projeto
 
-O objetivo é desenvolver um site moderno, acessível e responsivo (mobile-first),
-onde os clientes conheçam os serviços, a equipe e solicitem um horário.
+O objetivo é desenvolver um site moderno, acessível e responsivo,onde os clientes conheçam os serviços, a equipe e solicitem um horário.
 
-O projeto é **exclusivamente frontend** — é um protótipo demonstrativo. Não há
-banco de dados, autenticação nem backend, e por isso **nenhuma solicitação de
-agendamento vira reserva real** (ver [Limitações do protótipo](#limitações-do-protótipo)).
+O projeto é **exclusivamente frontend**, é um protótipo demonstrativo. Não há banco de dados, autenticação nem backend, e por isso **nenhuma solicitação de agendamento vira reserva real**.
 
 ## Tecnologias utilizadas
 
@@ -27,7 +23,7 @@ agendamento vira reserva real** (ver [Limitações do protótipo](#limitações-
 ### Pré-requisitos
 
 - Git
-- Node.js **20.19+** ou **22.12+** (exigido pelo Vite 8)
+- Node.js 20.19+ ou 22.12+
 - npm
 
 Para conferir as versões:
@@ -75,10 +71,10 @@ Abra o endereço informado pelo terminal, normalmente http://localhost:5173/.
 | `npm run format`       | Formata o código com Prettier (`.prettierrc.json`).  |
 | `npm run format:check` | Apenas verifica a formatação, sem alterar arquivos.  |
 
-## Configuração opcional — WhatsApp
+## Configuração opcional - WhatsApp
 
 A seção de agendamento tem um botão "Compartilhar via WhatsApp". O número de
-destino é **opcional** e vem de uma variável de ambiente — **não há número fixo
+destino é **opcional** e vem de uma variável de ambiente, **não há número fixo
 no código**.
 
 1. Copie o arquivo de exemplo:
@@ -91,7 +87,7 @@ no código**.
    (ex. fictício: `5514999999999`).
 
 Se a variável ficar vazia, o compartilhamento abre o WhatsApp **sem
-destinatário** — o próprio usuário escolhe para quem enviar.
+destinatário**, o próprio usuário escolhe para quem enviar.
 
 ## Estrutura do projeto
 
@@ -117,39 +113,6 @@ src/
 └── assets/                 # Imagens e ícones, por seção
 ```
 
-> Convenção: cada seção é uma pasta `components/<Secao>/` com `<Secao>.jsx` e
-> `<Secao>.css` juntos.
-
-## Organização dos dados
-
-O conteúdo textual e as imagens de cada seção ficam centralizados em `src/data/`,
-que é a **fonte única** consumida pelos componentes:
-
-- `data/servicos.js` — lista `SERVICOS` + utilitários `formatarPreco` e
-  `formatarDuracao`.
-- `data/portfolio.js` — lista `PORTFOLIO` (fotos, títulos e descrições).
-- `data/clientes.js` — dados das avaliações/depoimentos.
-
-As imagens são importadas dentro desses arquivos a partir de
-`src/assets/<secao>/`, então o Vite as empacota no build.
-
-## Origem das imagens
-
-As imagens ficam versionadas localmente em `src/assets/`, organizadas por seção
-(`assets/servicos/`, `assets/portfolio/`, `assets/equipe/`, `assets/hero.png`,
-etc.).
-
-> **A preencher pelo time:** a origem e a licença de cada conjunto de imagens não
-> estão registradas no repositório. Liste abaixo a fonte real (Figma do case,
-> banco de imagens, fotos próprias) para garantir o direito de uso:
->
-> | Conjunto             | Origem / Licença |
-> | -------------------- | ---------------- |
-> | `assets/portfolio/*` | _(preencher)_    |
-> | `assets/servicos/*`  | _(preencher)_    |
-> | `assets/equipe/*`    | _(preencher)_    |
-> | `assets/hero.png`    | _(preencher)_    |
-
 ## Limitações do protótipo
 
 Este é um protótipo demonstrativo. Ao apresentar, deixe claro que:
@@ -157,20 +120,20 @@ Este é um protótipo demonstrativo. Ao apresentar, deixe claro que:
 - **Não há reservas reais.** O formulário de agendamento valida os dados e gera
   uma mensagem, mas não cria reserva nem fala com nenhum backend. A própria
   prévia avisa que a solicitação é demonstrativa.
-- **Os horários são ilustrativos** — não representam vagas ou disponibilidade
+- **Os horários são ilustrativos**, não representam vagas ou disponibilidade
   real.
 - **Não há número de WhatsApp fixo.** O destino do compartilhamento vem da
   variável opcional `VITE_WHATSAPP_NUMERO`; sem ela, abre sem destinatário.
 - **Os telefones exibidos na Localização são placeholders** (`(14) 9XXXX-XXXX`).
-- O mapa é um **embed do Google Maps**.
+- O mapa é um embed do Google Maps.
 
 ## Como demonstrar
 
 1. Rode `npm run dev` e abra no navegador.
 2. Mostre o layout em **mobile** e **desktop** (o layout se adapta).
-3. Abra uma foto do **portfólio** (lightbox) e navegue com as setas.
+3. Abra uma foto do **portfólio** e navegue com as setas.
 4. Preencha o **agendamento**, veja a **prévia** e use **Compartilhar via
-   WhatsApp** — explicando que é uma solicitação demonstrativa.
+   WhatsApp**, explicando que é uma solicitação demonstrativa.
 
 ## Fluxo de trabalho com o Git
 

@@ -145,7 +145,9 @@
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .agendamento-botao:hover:not(:disabled) {
@@ -298,7 +300,9 @@
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .agendamento-botao-copiar:hover {
@@ -322,7 +326,10 @@
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .agendamento-botao-editar:hover {

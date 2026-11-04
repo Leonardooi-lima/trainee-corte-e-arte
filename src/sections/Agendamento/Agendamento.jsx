@@ -79,9 +79,8 @@ export default function Agendamento({
   const servicoRotulo =
     OPCOES_SERVICO.find((opcao) => opcao.valor === servicoExibido)?.rotulo || ''
   const profissionalRotulo =
-    OPCOES_PROFISSIONAL.find(
-      (opcao) => opcao.valor === profissionalExibido,
-    )?.rotulo || ''
+    OPCOES_PROFISSIONAL.find((opcao) => opcao.valor === profissionalExibido)
+      ?.rotulo || ''
 
   function validarCampos() {
     const novosErros = {}
@@ -215,9 +214,7 @@ export default function Agendamento({
 
         {mostrandoPrevia ? (
           <div className="agendamento-previa" aria-live="polite">
-            <h3 className="agendamento-previa-titulo">
-              Prévia da solicitação
-            </h3>
+            <h3 className="agendamento-previa-titulo">Prévia da solicitação</h3>
 
             <div className="agendamento-previa-item">
               <span className="agendamento-previa-label">Nome:</span>
@@ -279,11 +276,7 @@ export default function Agendamento({
             </div>
           </div>
         ) : (
-          <form
-            className="agendamento-form"
-            noValidate
-            onSubmit={lidarSubmit}
-          >
+          <form className="agendamento-form" noValidate onSubmit={lidarSubmit}>
             <div className="agendamento-campo">
               <label htmlFor="agendamento-nome" className="agendamento-label">
                 Nome do cliente
@@ -333,9 +326,7 @@ export default function Agendamento({
                 }
                 required
                 aria-invalid={Boolean(errors.telefone)}
-                aria-describedby={
-                  errors.telefone ? 'erro-telefone' : undefined
-                }
+                aria-describedby={errors.telefone ? 'erro-telefone' : undefined}
               />
               {errors.telefone && (
                 <span
@@ -519,10 +510,7 @@ export default function Agendamento({
               </p>
             </div>
 
-            <button
-              type="submit"
-              className="agendamento-botao"
-            >
+            <button type="submit" className="agendamento-botao">
               Próximo
             </button>
           </form>
