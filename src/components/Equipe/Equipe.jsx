@@ -21,7 +21,7 @@ const profissionais = [
   },
 ]
 
-export default function Equipe({ onSelecionarProfissional }) {
+export default function Equipe() {
   return (
     <section className="equipe" aria-label="Nossa equipe">
       <header className="equipe-cabecalho">
@@ -43,13 +43,6 @@ export default function Equipe({ onSelecionarProfissional }) {
             <figcaption className="equipe-legenda">
               <h3>{profissional.nome}</h3>
               <p>{profissional.especialidade}</p>
-              <button
-                className="equipe-agendar"
-                onClick={() => onSelecionarProfissional(profissional.nome)}
-                type="button"
-              >
-                Agendar com este profissional
-              </button>
             </figcaption>
           </figure>
         ))}

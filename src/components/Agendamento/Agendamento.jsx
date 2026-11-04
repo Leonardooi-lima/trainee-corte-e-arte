@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { useEhDesktop } from '../../hooks/useEhDesktop.js'
+import imagemCut from '../../assets/agendamento/cut.webp'
 import './Agendamento.css'
 
 const OPCOES_SERVICO = [
@@ -202,8 +203,12 @@ export default function Agendamento({
           </p>
         </div>
 
-        <div className="agendamento-imagem" aria-hidden="true">
-          <div className="agendamento-imagem-placeholder" />
+        <div className="agendamento-imagem">
+          <img
+            src={imagemCut}
+            alt="Profissional realizando corte de cabelo na barbearia Corte & Arte"
+            className="agendamento-imagem-foto"
+          />
         </div>
 
         {mostrandoPrevia ? (

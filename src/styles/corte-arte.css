@@ -250,30 +250,7 @@
   font-size: 16px;
 }
 
-/* Botão agendar serviço (US08) */
-.ca-agendar-servico {
-  margin-top: 16px;
-  padding: 10px 16px;
-  font-family: 'Cabin', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  background: #ffffff;
-  color: #111111;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.2s ease;
-}
 
-.ca-agendar-servico:hover {
-  background: #f5f5f5;
-}
-
-.ca-agendar-servico:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 2px;
-}
 
 /* Aviso de soma dos serviços */
 .ca-aviso {

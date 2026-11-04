@@ -20,7 +20,7 @@ function Duracao({ servico }) {
   )
 }
 
-function CardServicoMobile({ servico, onSelecionarServico }) {
+function CardServicoMobile({ servico }) {
   return (
     <article className="ca-card ca-servico ca-servico-mobile">
       <FundoCard
@@ -36,19 +36,12 @@ function CardServicoMobile({ servico, onSelecionarServico }) {
           {formatarPreco(servico.preco, servico.adicional)}
         </span>
         <Duracao servico={servico} />
-        <button
-          className="ca-agendar-servico"
-          onClick={() => onSelecionarServico(servico.nome)}
-          type="button"
-        >
-          Agendar este servi\u00e7o
-        </button>
       </div>
     </article>
   )
 }
 
-function CardServicoDesktop({ servico, onSelecionarServico }) {
+function CardServicoDesktop({ servico }) {
   return (
     <article className="ca-servico-coluna">
       <div className="ca-card ca-servico ca-servico-desktop">
@@ -66,18 +59,11 @@ function CardServicoDesktop({ servico, onSelecionarServico }) {
         {formatarPreco(servico.preco, servico.adicional)}
       </span>
       <Duracao servico={servico} />
-      <button
-        className="ca-agendar-servico"
-        onClick={() => onSelecionarServico(servico.nome)}
-        type="button"
-      >
-        Agendar este servi\u00e7o
-      </button>
     </article>
   )
 }
 
-function SecaoServicos({ desktop, onSelecionarServico }) {
+function SecaoServicos({ desktop }) {
   return (
     <section
       id="servicos"
@@ -95,13 +81,11 @@ function SecaoServicos({ desktop, onSelecionarServico }) {
               <CardServicoDesktop
                 key={servico.id}
                 servico={servico}
-                onSelecionarServico={onSelecionarServico}
               />
             ) : (
               <CardServicoMobile
                 key={servico.id}
                 servico={servico}
-                onSelecionarServico={onSelecionarServico}
               />
             ),
           )}
@@ -120,7 +104,7 @@ function SecaoServicos({ desktop, onSelecionarServico }) {
 }
 
 // Componente da seção: mede a largura e decide mobile/desktop.
-export default function Servicos({ onSelecionarServico }) {
+export default function Servicos() {
   const ref = useRef(null)
   const desktop = useEhDesktop(ref)
   return (
@@ -128,7 +112,7 @@ export default function Servicos({ onSelecionarServico }) {
       ref={ref}
       className={'ca-raiz ' + (desktop ? 'ca-desktop' : 'ca-mobile')}
     >
-      <SecaoServicos desktop={desktop} onSelecionarServico={onSelecionarServico} />
+      <SecaoServicos desktop={desktop} />
     </div>
   )
 }

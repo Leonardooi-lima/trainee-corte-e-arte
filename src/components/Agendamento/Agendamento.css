@@ -55,39 +55,21 @@
   text-align: center;
 }
 
-/* Imagem ilustrativa (placeholder — substituir por asset real quando disponível) */
+/* Imagem ilustrativa */
 .agendamento-imagem {
   width: 100%;
   height: 260px;
   border-radius: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
   border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
-.agendamento-imagem-placeholder {
+.agendamento-imagem-foto {
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.08) 0%,
-    transparent 40%
-  ),
-  radial-gradient(
-    circle at 70% 70%,
-    rgba(255, 255, 255, 0.06) 0%,
-    transparent 40%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cabin', sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.45);
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Formulário */
@@ -379,8 +361,8 @@
   }
 
   .agendamento-imagem {
-    width: 320px;
-    height: 420px;
+    width: 286px;
+    height: 540px;
     flex-shrink: 0;
   }
 
