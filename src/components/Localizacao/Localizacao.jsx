@@ -1,4 +1,4 @@
-﻿import './Localizacao.css'
+import './Localizacao.css'
 import whatsappIcon from '../../assets/whatsapp.png'
 import localizacaoIcon from '../../assets/icones/localizacao.svg'
 import enviarIcon from '../../assets/icones/enviar.svg'
