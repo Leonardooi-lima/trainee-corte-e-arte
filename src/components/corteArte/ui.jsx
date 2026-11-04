@@ -1,101 +1,68 @@
-// Primitivos de UI e ícones compartilhados pelas seções do site.
+﻿import tesouraIcon from '../../assets/icones/tesoura.svg'
+import pincelIcon from '../../assets/icones/pincel.svg'
+import navalhaIcon from '../../assets/icones/navalha.svg'
+import relogioIcon from '../../assets/icones/relogio.svg'
+import ampliarIcon from '../../assets/icones/ampliar.svg'
+import fecharIcon from '../../assets/icones/fechar.svg'
+import setaEsquerdaIcon from '../../assets/icones/seta-esquerda.svg'
+import setaDireitaIcon from '../../assets/icones/seta-direita.svg'
+import ornamento from '../../assets/icones/ornamento.svg'
 
-const propsIcone = {
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 1.8,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': true,
-}
-
-// ===== Descrição com trecho em negrito =====
+// Descrição com trecho em negrito.
 export function Descricao({ texto, negrito }) {
-  if (!negrito || !texto.includes(negrito)) return <>{texto}</>;
-  const [antes, depois] = texto.split(negrito);
+  if (!negrito || !texto.includes(negrito)) return <>{texto}</>
+  const [antes, depois] = texto.split(negrito)
   return (
     <>
       {antes}
       <strong style={{ fontWeight: 600 }}>{negrito}</strong>
       {depois}
     </>
-  );
-}
-
-// ===== Ícones =====
-export function IconeServico({ tipo }) {
-  const estilo = { width: 36, height: 36, color: '#fff', marginBottom: 4 }
-  if (tipo === 'tesoura')
-    return (
-      <svg {...propsIcone} style={estilo}>
-        <circle cx="6" cy="6" r="3" />
-        <circle cx="6" cy="18" r="3" />
-        <line x1="20" y1="4" x2="8.12" y2="15.88" />
-        <line x1="14.47" y1="14.48" x2="20" y2="20" />
-        <line x1="8.12" y1="8.12" x2="12" y2="12" />
-      </svg>
-    )
-  if (tipo === 'pincel')
-    return (
-      <svg {...propsIcone} style={estilo}>
-        <path d="M7.5 9.5a4.5 4.5 0 0 1 9 0c0 1-.5 1.5-1 1.5h-7c-.5 0-1-.5-1-1.5Z" />
-        <rect x="9" y="11" width="6" height="2.2" rx="1" />
-        <path d="M9.4 13.2 10 20a2 2 0 0 0 4 0l.6-6.8" />
-      </svg>
-    )
-  return (
-    <svg {...propsIcone} style={estilo}>
-      <rect x="9.5" y="3" width="5" height="9" rx="1.2" />
-      <line x1="12" y1="12" x2="12" y2="15" />
-      <circle cx="12" cy="18" r="2.4" />
-    </svg>
   )
 }
 
-export const IconeRelogio = () => (
-  <svg {...propsIcone}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
-)
+export function IconeServico({ tipo }) {
+  let icone = navalhaIcon
+  if (tipo === 'tesoura') icone = tesouraIcon
+  if (tipo === 'pincel') icone = pincelIcon
 
-export const IconeAmpliar = () => (
-  <svg {...propsIcone}><path d="M15 3h6v6" /><path d="M9 21H3v-6" /><path d="M21 3l-7 7" /><path d="M3 21l7-7" /></svg>
-);
+  return (
+    <img className="ca-icone-servico" src={icone} alt="" draggable={false} />
+  )
+}
 
-export const IconeFechar = () => (
-  <svg {...propsIcone}><path d="M6 6l12 12" /><path d="M18 6L6 18" /></svg>
-);
+export function IconeRelogio() {
+  return <img src={relogioIcon} alt="" draggable={false} />
+}
 
-export const IconeSeta = ({ direcao }) => (
-  <svg {...propsIcone}>{direcao === "esquerda" ? <path d="M15 5l-7 7 7 7" /> : <path d="M9 5l7 7-7 7" />}</svg>
-);
+export function IconeAmpliar() {
+  return <img src={ampliarIcon} alt="" draggable={false} />
+}
 
-// ===== Ornamento do título (desktop) =====
+export function IconeFechar() {
+  return <img src={fecharIcon} alt="" draggable={false} />
+}
+
+export function IconeSeta({ direcao }) {
+  const icone = direcao === 'esquerda' ? setaEsquerdaIcon : setaDireitaIcon
+  return <img src={icone} alt="" draggable={false} />
+}
+
+// Enfeite dos títulos no computador.
 export function Flourish({ espelhado }) {
   return (
-    <svg
-      viewBox="0 0 240 40"
-      className="ca-flourish"
-      style={espelhado ? { transform: 'scaleX(-1)' } : undefined}
-      aria-hidden="true"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      >
-        <path d="M6 26 C 80 22 150 19 198 16" />
-        <path d="M6 26 C 55 15 120 14 160 21" />
-        <path d="M198 16 c 18 -1 29 10 23 22 c -4 9 -19 8 -21 -2 c -1 -6 6 -10 11 -5" />
-      </g>
-    </svg>
+    <img
+      src={ornamento}
+      className={
+        espelhado ? 'ca-flourish ca-flourish-espelhado' : 'ca-flourish'
+      }
+      alt=""
+      draggable={false}
+    />
   )
 }
 
-// ===== Título de seção =====
+// Título de seção.
 export function TituloSecao({ children, desktop, id }) {
   if (!desktop) {
     return (
@@ -117,7 +84,7 @@ export function TituloSecao({ children, desktop, id }) {
   )
 }
 
-// ===== Fundo de card (foto + véu opcional) =====
+// Fundo de card com foto e camada escura opcional.
 export function FundoCard({ src, alt, veu = true }) {
   return (
     <>

@@ -1,5 +1,7 @@
 ﻿import './Localizacao.css'
 import whatsappIcon from '../../assets/whatsapp.png'
+import localizacaoIcon from '../../assets/icones/localizacao.svg'
+import enviarIcon from '../../assets/icones/enviar.svg'
 
 const linkGoogleMaps = 'https://maps.app.goo.gl/EbViNBSvktiiSzL57'
 
@@ -24,9 +26,7 @@ export default function Localizacao() {
           rel="noreferrer"
         >
           Como chegar
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M22 2 2 10l8 3 3 8 9-19ZM11 12l7-6-6 8-1-2Z" />
-          </svg>
+          <img src={enviarIcon} alt="" />
         </a>
 
         <div id="contato" className="localizacao-informacoes">
@@ -50,14 +50,11 @@ export default function Localizacao() {
             </div>
 
             <div className="localizacao-contato-item">
-              <svg
+              <img
                 className="localizacao-contato-icone"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z" />
-              </svg>
+                src={localizacaoIcon}
+                alt=""
+              />
               <div>
                 <h3>Horário de funcionamento</h3>
                 <p>
