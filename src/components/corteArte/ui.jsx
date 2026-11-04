@@ -8,7 +8,7 @@ import setaEsquerdaIcon from '../../assets/icones/seta-esquerda.svg'
 import setaDireitaIcon from '../../assets/icones/seta-direita.svg'
 import ornamento from '../../assets/icones/ornamento.svg'
 
-// Descrição com trecho em negrito.
+
 export function Descricao({ texto, negrito }) {
   if (!negrito || !texto.includes(negrito)) return <>{texto}</>
   const [antes, depois] = texto.split(negrito)
@@ -48,7 +48,7 @@ export function IconeSeta({ direcao }) {
   return <img src={icone} alt="" draggable={false} />
 }
 
-// Enfeite dos títulos no computador.
+
 export function Flourish({ espelhado }) {
   return (
     <img
@@ -62,7 +62,6 @@ export function Flourish({ espelhado }) {
   )
 }
 
-// Título de seção.
 export function TituloSecao({ children, desktop, id }) {
   if (!desktop) {
     return (
