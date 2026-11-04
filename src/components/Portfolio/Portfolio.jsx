@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useEhDesktop } from "../hooks/useEhDesktop.js";
-import { PORTFOLIO } from "../data/portfolio.js";
-import { Descricao, IconeAmpliar, IconeFechar, IconeSeta, FundoCard, TituloSecao } from "./corteArte/ui.jsx";
-import "../styles/corte-arte.css";
+import { useEhDesktop } from "../../hooks/useEhDesktop.js";
+import { PORTFOLIO } from "../../data/portfolio.js";
+import { Descricao, IconeAmpliar, IconeFechar, IconeSeta, FundoCard, TituloSecao } from "../corteArte/ui.jsx";
+import "../../styles/corte-arte.css";
 
 function CarrosselPortfolio({ fotos, index, aoMudarIndex, aoAbrir, refsSlides }) {
   const [arrastando, setArrastando] = useState(false);
