@@ -49,6 +49,7 @@ export default function Agendamento({
   const [horario, setHorario] = useState('')
   const [errors, setErrors] = useState({})
   const [mostrandoPrevia, setMostrandoPrevia] = useState(false)
+  const [mensagemCopiada, setMensagemCopiada] = useState(false)
 
   const hoje = obterDataLocal()
   const telefoneLimpo = telefone.replace(/\D/g, '')
@@ -129,6 +130,46 @@ export default function Agendamento({
 
   function lidarEditarNovamente() {
     setMostrandoPrevia(false)
+    setMensagemCopiada(false)
+  }
+
+  function gerarMensagemSolicitacao() {
+    return [
+      '*Solicitação de Agendamento — Corte & Arte*',
+      '',
+      `*Cliente:* ${nome.trim()}`,
+      `*Telefone:* ${telefone.trim()}`,
+      `*Serviço:* ${servicoRotulo}`,
+      `*Profissional:* ${profissionalRotulo}`,
+      `*Data:* ${data}`,
+      `*Horário:* ${horario}`,
+      '',
+      '_(Esta solicitação é demonstrativa e não representa uma reserva confirmada.)_',
+    ].join('\n')
+  }
+
+  function obterUrlWhatsApp() {
+    const textoMensagem = encodeURIComponent(gerarMensagemSolicitacao())
+    const numeroTeste = (import.meta.env.VITE_WHATSAPP_NUMERO || '').replace(
+      /\D/g,
+      '',
+    )
+
+    return numeroTeste
+      ? `https://wa.me/${numeroTeste}?text=${textoMensagem}`
+      : `https://wa.me/?text=${textoMensagem}`
+  }
+
+  async function lidarCopiarMensagem() {
+    try {
+      await navigator.clipboard.writeText(gerarMensagemSolicitacao())
+      setMensagemCopiada(true)
+      setTimeout(() => {
+        setMensagemCopiada(false)
+      }, 3000)
+    } catch {
+      setMensagemCopiada(false)
+    }
   }
 
   function atualizarCampo(setter, campo, valor) {
@@ -203,13 +244,32 @@ export default function Agendamento({
               confirmada.
             </p>
 
-            <button
-              className="agendamento-botao agendamento-botao-editar"
-              onClick={lidarEditarNovamente}
-              type="button"
-            >
-              Editar informações
-            </button>
+            <div className="agendamento-previa-acoes">
+              <a
+                className="agendamento-botao agendamento-botao-whatsapp"
+                href={obterUrlWhatsApp()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Compartilhar via WhatsApp
+              </a>
+
+              <button
+                className="agendamento-botao agendamento-botao-copiar"
+                onClick={lidarCopiarMensagem}
+                type="button"
+              >
+                {mensagemCopiada ? 'Mensagem copiada!' : 'Copiar mensagem'}
+              </button>
+
+              <button
+                className="agendamento-botao agendamento-botao-editar"
+                onClick={lidarEditarNovamente}
+                type="button"
+              >
+                Editar informações
+              </button>
+            </div>
           </div>
         ) : (
           <form

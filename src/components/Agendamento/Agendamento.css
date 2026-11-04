@@ -284,24 +284,69 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.agendamento-botao-editar {
+.agendamento-previa-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
   margin-top: 8px;
+}
+
+.agendamento-botao-whatsapp {
+  text-decoration: none;
+  text-align: center;
+  background: #ffffff;
+  color: #111111;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.agendamento-botao-whatsapp:hover {
+  background: #f5f5f5;
+}
+
+.agendamento-botao-copiar {
+  padding: 12px 24px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.agendamento-botao-copiar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.agendamento-botao-copiar:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.agendamento-botao-editar {
   padding: 12px 24px;
   font-family: 'Cabin', sans-serif;
   font-size: 16px;
   font-weight: 600;
   background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 8px;
   cursor: pointer;
-  width: auto;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  width: 100%;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .agendamento-botao-editar:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: #fff;
+  color: #fff;
 }
 
 .agendamento-botao-editar:focus-visible {
@@ -339,7 +384,8 @@
     flex-shrink: 0;
   }
 
-  .agendamento-form {
+  .agendamento-form,
+  .agendamento-previa {
     flex: 1;
     max-width: 448px;
   }
@@ -347,5 +393,9 @@
   .agendamento-botao {
     width: auto;
     padding: 14px 28px;
+  }
+
+  .agendamento-previa-acoes .agendamento-botao {
+    width: 100%;
   }
 }
