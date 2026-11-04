@@ -30,7 +30,8 @@
 .ca-h2 { margin: 0 0 36px; text-align: center; font-size: 30px; font-weight: 700; letter-spacing: .03em; line-height: 1.15; color: #fff; }
 .ca-titulo-desktop { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 56px; }
 .ca-titulo-desktop .ca-h2 { margin: 0; font-size: 52px; white-space: nowrap; }
-.ca-flourish { width: 170px; height: auto; color: #fff; flex-shrink: 0; }
+.ca-flourish { width: 170px; height: auto; flex-shrink: 0; }
+.ca-flourish-espelhado { transform: scaleX(-1); }
 
 /* Card base */
 .ca-card {
@@ -43,6 +44,7 @@
 .ca-card-conteudo { position: relative; z-index: 1; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
 
 /* Serviços */
+.ca-icone-servico { width: 36px; height: 36px; margin-bottom: 4px; }
 .ca-servicos { display: flex; flex-direction: column; gap: 32px; }
 .ca-servico-nome { margin: 0 0 8px; font-size: 30px; line-height: 1.1; color: #fff; }
 .ca-desc { margin: 0; max-width: 300px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.9); }
@@ -51,7 +53,7 @@
   display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
   font-family: 'Cabin', sans-serif; font-size: 15px; letter-spacing: .02em; color: rgba(255,255,255,.75);
 }
-.ca-duracao svg { width: 16px; height: 16px; }
+.ca-duracao img { width: 16px; height: 16px; }
 
 /* Card mobile: proporção da foto do Figma (596 x 430) e cantos iguais aos dela.
    O ::before garante a altura mínima da proporção; se o texto precisar de mais
@@ -59,11 +61,11 @@
 .ca-servico-mobile { border-radius: 7.4% / 10.2%; }
 .ca-servico-mobile::before { content: ""; flex: 0 0 0; padding-bottom: calc(430 / 596 * 100%); }
 .ca-servico-mobile .ca-card-conteudo { justify-content: center; padding: 22px 20px; }
-.ca-servico-mobile svg { width: 30px !important; height: 30px !important; }
+.ca-servico-mobile .ca-icone-servico { width: 30px; height: 30px; }
 .ca-servico-mobile .ca-servico-nome { font-size: 28px; margin-bottom: 6px; }
 .ca-servico-mobile .ca-desc { max-width: 290px; font-size: 15px; line-height: 1.5; }
 .ca-servico-mobile .ca-preco { margin-top: 10px; font-size: 28px; line-height: 1.1; }
-.ca-servico-mobile .ca-duracao svg { width: 15px !important; height: 15px !important; }
+.ca-servico-mobile .ca-duracao img { width: 15px; height: 15px; }
 .ca-servico-mobile .ca-duracao { margin-top: 4px; font-size: 14px; }
 
 .ca-desktop .ca-servicos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 2.5vw, 40px); }
@@ -99,7 +101,7 @@
   background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.35); color: #fff;
   pointer-events: none; transition: opacity .2s ease;
 }
-.ca-icone-ampliar svg { width: 18px; height: 18px; }
+.ca-icone-ampliar img { width: 18px; height: 18px; }
 
 /* Carrossel (mobile) */
 .ca-carrossel { display: flex; flex-direction: column; align-items: center; }
@@ -172,7 +174,7 @@
   transition: background .2s ease, border-color .2s ease, transform .1s ease, opacity .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.ca-modal-botao svg { width: 22px; height: 22px; }
+.ca-modal-botao img { width: 22px; height: 22px; }
 .ca-modal-botao:active:not(:disabled) { transform: scale(.92); }
 .ca-modal-botao:disabled { opacity: .3; cursor: not-allowed; }
 .ca-modal-imagem { width: 100%; display: flex; justify-content: center; touch-action: pan-y; user-select: none; }
