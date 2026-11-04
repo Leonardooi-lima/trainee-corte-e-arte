@@ -1,6 +1,6 @@
 .equipe {
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
   padding: 98px 72px 100px;
   background: #202020;
 }
@@ -69,6 +69,31 @@
   width: 100%;
   height: auto;
   border-radius: 22px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .equipe-foto:hover img {
+    animation: equipe-mini-shake 0.4s ease-in-out;
+  }
+}
+
+@keyframes equipe-mini-shake {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+
+  25% {
+    transform: translateX(-2px) rotate(-0.6deg);
+  }
+
+  50% {
+    transform: translateX(2px) rotate(0.6deg);
+  }
+
+  75% {
+    transform: translateX(-1px) rotate(-0.3deg);
+  }
 }
 
 .equipe-legenda {

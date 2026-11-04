@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import './Avaliacoes.css'
 import {
   clientes,
@@ -47,21 +48,89 @@ function CardAvaliacao({ cliente }) {
 }
 
 function FileiraAvaliacoes({ posicao, clientesDaFileira }) {
+  const fileiraRef = useRef(null)
+  const [repeticoes, setRepeticoes] = useState(1)
+
+  useEffect(() => {
+    const fileira = fileiraRef.current
+
+    const ajustarRepeticoes = () => {
+      const grupo = fileira.querySelector('.avaliacoes-grupo')
+      const card = grupo.querySelector('.avaliacoes-card')
+      const larguraCard = card.getBoundingClientRect().width
+      if (!larguraCard) return
+
+      const intervalo = parseFloat(getComputedStyle(grupo).columnGap) || 0
+      const deslocamento =
+        parseFloat(
+          getComputedStyle(fileira).getPropertyValue('--deslocamento-inicial'),
+        ) || 0
+      const larguraSequencia =
+        clientesDaFileira.length * (larguraCard + intervalo)
+
+      setRepeticoes(
+        Math.max(
+          1,
+          Math.ceil(
+            (fileira.getBoundingClientRect().width + deslocamento) /
+              larguraSequencia,
+          ),
+        ),
+      )
+    }
+
+    ajustarRepeticoes()
+
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', ajustarRepeticoes)
+      return () => window.removeEventListener('resize', ajustarRepeticoes)
+    }
+
+    const observer = new ResizeObserver(ajustarRepeticoes)
+    observer.observe(fileira)
+    return () => observer.disconnect()
+  }, [clientesDaFileira.length])
+
+  const sequencia = Array.from(
+    { length: repeticoes },
+    () => clientesDaFileira,
+  ).flat()
+
   return (
-    <div className={`avaliacoes-fileira avaliacoes-fileira-${posicao}`}>
-      {clientesDaFileira.map((cliente, indice) => (
-        <CardAvaliacao
-          cliente={cliente}
-          key={`${cliente.nome}-${indice}`}
-        />
-      ))}
+    <div
+      ref={fileiraRef}
+      className={`avaliacoes-fileira avaliacoes-fileira-${posicao}`}
+    >
+      <div
+        className="avaliacoes-trilha"
+        style={{ '--duracao': `${sequencia.length * 6}s` }}
+      >
+        {[0, 1].map((copia) => (
+          <div
+            className="avaliacoes-grupo"
+            aria-hidden={copia === 1 ? true : undefined}
+            key={copia}
+          >
+            {sequencia.map((cliente, indice) => (
+              <CardAvaliacao
+                cliente={cliente}
+                key={`${cliente.nome}-${indice}`}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
 
 export default function Avaliacoes() {
   return (
-    <section className="avaliacoes" aria-label="Avaliações de clientes">
+    <section
+      id="avaliacoes"
+      className="avaliacoes"
+      aria-label="Avaliações de clientes"
+    >
       <header className="avaliacoes-cabecalho">
         <img
           className="avaliacoes-titulo-pequeno"

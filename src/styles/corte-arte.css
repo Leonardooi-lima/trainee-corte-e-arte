@@ -19,6 +19,15 @@
 
 /* Seções e largura do conteúdo */
 .ca-secao { padding: 56px 20px 40px; }
+.ca-secao-servicos {
+  background-color: #202020;
+  background-image:
+    linear-gradient(#202020d1, #202020d1),
+    url('../assets/servicos/textura-damask.jpg');
+  background-position: center, center top;
+  background-size: auto, 1000px auto;
+  background-repeat: no-repeat, repeat;
+}
 .ca-secao-portfolio { padding-bottom: 64px; }
 .ca-conteudo { width: 100%; max-width: 448px; margin: 0 auto; }
 
@@ -28,10 +37,13 @@
 
 /* Títulos */
 .ca-h2 { margin: 0 0 36px; text-align: center; font-size: 30px; font-weight: 700; letter-spacing: .03em; line-height: 1.15; color: #fff; }
-.ca-titulo-desktop { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 56px; }
+.ca-titulo-desktop { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 56px; }
 .ca-titulo-desktop .ca-h2 { margin: 0; font-size: 52px; white-space: nowrap; }
-.ca-flourish { width: 170px; height: auto; flex-shrink: 0; }
+.ca-flourish { display: block; width: 249px; height: auto; flex-shrink: 0; }
 .ca-flourish-espelhado { transform: scaleX(-1); }
+.ca-titulo-mobile { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 36px; }
+.ca-titulo-mobile .ca-h2 { margin: 0; font-size: clamp(20px, 5vw, 30px); white-space: nowrap; }
+.ca-titulo-mobile .ca-flourish { width: clamp(32px, 15vw, 112px); min-width: 0; flex-shrink: 1; }
 
 /* Card base */
 .ca-card {

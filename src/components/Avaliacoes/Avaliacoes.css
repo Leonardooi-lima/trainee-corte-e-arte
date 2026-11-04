@@ -4,8 +4,7 @@
   min-height: 100vh;
   overflow: hidden;
   padding: 280px 0 138px;
-  background:
-    linear-gradient(180deg, #202020 0, #292929 112px, #292929 100%);
+  background: linear-gradient(180deg, #202020 0, #292929 112px, #292929 100%);
 }
 
 .avaliacoes-desktop {
@@ -52,18 +51,30 @@
 }
 
 .avaliacoes-fileira {
+  --deslocamento-inicial: 0px;
+  overflow: hidden;
+}
+
+.avaliacoes-trilha {
+  display: flex;
+  width: max-content;
+  transform: translateX(calc(0px - var(--deslocamento-inicial)));
+  animation: mover-cards var(--duracao, 48s) linear infinite;
+}
+
+.avaliacoes-grupo {
   display: flex;
   flex: none;
   gap: 20px;
-  animation: mover-cards 24s linear infinite;
+  padding-right: 20px;
 }
 
 .avaliacoes-fileira-esquerda {
-  margin-left: -148px;
+  --deslocamento-inicial: 148px;
 }
 
 .avaliacoes-fileira-direita {
-  margin-left: -194px;
+  --deslocamento-inicial: 194px;
 }
 
 .avaliacoes-card {
@@ -209,14 +220,14 @@
   line-height: 1;
 }
 
-/* sisteminha para ocards tentarem se mexer */
+/* Dois grupos idênticos mantêm a passagem contínua entre os ciclos. */
 @keyframes mover-cards {
   from {
-    transform: translateX(0);
+    transform: translateX(calc(0px - var(--deslocamento-inicial)));
   }
 
   to {
-    transform: translateX(-2168px);
+    transform: translateX(calc(-50% - var(--deslocamento-inicial)));
   }
 }
 
@@ -224,8 +235,7 @@
   .avaliacoes {
     min-height: 100vh;
     padding: 134px 11px 76px;
-    background:
-      linear-gradient(180deg, #202020 0, #292929 72px, #292929 100%);
+    background: linear-gradient(180deg, #202020 0, #292929 72px, #292929 100%);
   }
 
   .avaliacoes-cabecalho {
@@ -289,7 +299,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .avaliacoes-fileira {
+  .avaliacoes-trilha {
     animation: none;
   }
 }
