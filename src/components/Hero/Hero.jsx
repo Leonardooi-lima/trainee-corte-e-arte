@@ -1,4 +1,4 @@
-import logo from '../../assets/logos/logo-corte-arte.webp'
+import logo from '../../assets/logos/logo-hero.svg'
 import './Hero.css'
 
 export default function Hero() {
@@ -35,8 +35,8 @@ export default function Hero() {
           className="logo-hero"
           src={logo}
           alt="Corte & Arte"
-          width="348"
-          height="336"
+          width="372"
+          height="390"
         />
 
         <h1 className="titulo-hero">

@@ -6,7 +6,7 @@ import ampliarIcon from '../../assets/icones/ampliar.svg'
 import fecharIcon from '../../assets/icones/fechar.svg'
 import setaEsquerdaIcon from '../../assets/icones/seta-esquerda.svg'
 import setaDireitaIcon from '../../assets/icones/seta-direita.svg'
-import ornamento from '../../assets/icones/ornamento.svg'
+import ornamento from '../../assets/icones/ornamento-portfolio.svg'
 
 
 export function Descricao({ texto, negrito }) {
@@ -49,10 +49,10 @@ export function IconeSeta({ direcao }) {
 }
 
 
-export function Flourish({ espelhado }) {
+export function Flourish({ espelhado, src = ornamento }) {
   return (
     <img
-      src={ornamento}
+      src={src}
       className={
         espelhado ? 'ca-flourish ca-flourish-espelhado' : 'ca-flourish'
       }
@@ -62,23 +62,14 @@ export function Flourish({ espelhado }) {
   )
 }
 
-export function TituloSecao({ children, desktop, id }) {
-  if (!desktop) {
-    return (
-      <h2 id={id} className="ca-titulo ca-h2">
-        <span aria-hidden="true">— </span>
-        {children}
-        <span aria-hidden="true"> —</span>
-      </h2>
-    )
-  }
+export function TituloSecao({ children, desktop, id, ornamentoSrc }) {
   return (
-    <div className="ca-titulo-desktop">
-      <Flourish />
+    <div className={desktop ? 'ca-titulo-desktop' : 'ca-titulo-mobile'}>
+      <Flourish src={ornamentoSrc} />
       <h2 id={id} className="ca-titulo ca-h2">
         {children}
       </h2>
-      <Flourish espelhado />
+      <Flourish espelhado src={ornamentoSrc} />
     </div>
   )
 }

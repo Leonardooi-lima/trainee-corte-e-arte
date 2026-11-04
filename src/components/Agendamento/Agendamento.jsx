@@ -33,6 +33,16 @@ function valorExiste(valor, opcoes) {
   return opcoes.some((opcao) => opcao.valor === valor)
 }
 
+function horarioJaPassou(data, horario) {
+  if (!data || !horario) return false
+
+  const [ano, mes, dia] = data.split('-').map(Number)
+  const [hora, minuto] = horario.split(':').map(Number)
+  const dataDoHorario = new Date(ano, mes - 1, dia, hora, minuto)
+
+  return dataDoHorario < new Date()
+}
+
 export default function Agendamento({
   servicoInicial = '',
   profissionalInicial = '',
@@ -73,16 +83,6 @@ export default function Agendamento({
       (opcao) => opcao.valor === profissionalExibido,
     )?.rotulo || ''
 
-  const formularioValido = Boolean(
-    nome.trim() &&
-      telefoneValido &&
-      valorExiste(servicoExibido, OPCOES_SERVICO) &&
-      valorExiste(profissionalExibido, OPCOES_PROFISSIONAL) &&
-      data &&
-      data >= hoje &&
-      HORARIOS.includes(horario),
-  )
-
   function validarCampos() {
     const novosErros = {}
 
@@ -113,6 +113,8 @@ export default function Agendamento({
 
     if (!HORARIOS.includes(horario)) {
       novosErros.horario = 'Selecione um horário.'
+    } else if (horarioJaPassou(data, horario)) {
+      novosErros.horario = 'Selecione um horário que ainda não passou.'
     }
 
     setErrors(novosErros)
@@ -187,7 +189,7 @@ export default function Agendamento({
   return (
     <section
       ref={ref}
-      id="contato"
+      id="agendamento"
       className={`agendamento ${
         desktop ? 'agendamento--desktop' : 'agendamento--mobile'
       }`}
@@ -484,7 +486,11 @@ export default function Agendamento({
               >
                 <option value="">Selecione um horário</option>
                 {HORARIOS.map((opcao) => (
-                  <option key={opcao} value={opcao}>
+                  <option
+                    key={opcao}
+                    value={opcao}
+                    disabled={horarioJaPassou(data, opcao)}
+                  >
                     {opcao}
                   </option>
                 ))}
@@ -516,7 +522,6 @@ export default function Agendamento({
             <button
               type="submit"
               className="agendamento-botao"
-              disabled={!formularioValido}
             >
               Próximo
             </button>

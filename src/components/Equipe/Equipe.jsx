@@ -23,7 +23,7 @@ const profissionais = [
 
 export default function Equipe() {
   return (
-    <section className="equipe" aria-label="Nossa equipe">
+    <section id="equipe" className="equipe" aria-label="Nossa equipe">
       <header className="equipe-cabecalho">
         <p className="equipe-sobretitulo">NOSSO TIME</p>
         <h2 className="equipe-titulo">
