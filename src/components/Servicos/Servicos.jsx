@@ -1,6 +1,10 @@
 import { useRef } from 'react'
 import { useEhDesktop } from '../../hooks/useEhDesktop.js'
-import { SERVICOS, formatarPreco, formatarDuracao } from '../../data/servicos.js'
+import {
+  SERVICOS,
+  formatarPreco,
+  formatarDuracao,
+} from '../../data/servicos.js'
 import {
   IconeServico,
   IconeRelogio,
@@ -78,15 +82,9 @@ function SecaoServicos({ desktop }) {
         <div className="ca-servicos">
           {SERVICOS.map((servico) =>
             desktop ? (
-              <CardServicoDesktop
-                key={servico.id}
-                servico={servico}
-              />
+              <CardServicoDesktop key={servico.id} servico={servico} />
             ) : (
-              <CardServicoMobile
-                key={servico.id}
-                servico={servico}
-              />
+              <CardServicoMobile key={servico.id} servico={servico} />
             ),
           )}
         </div>

@@ -1,8 +1,8 @@
-import './SobreNos.css';
-import ambienteImg from './assets/ambiente.png';
-import iconRazor from './assets/icon-razor.svg';
-import iconBarberChair from './assets/icon-barber-chair.svg';
-import iconStylist from './assets/icon-stylist.svg';
+import './SobreNos.css'
+import ambienteImg from './assets/ambiente.png'
+import iconRazor from './assets/icon-razor.svg'
+import iconBarberChair from './assets/icon-barber-chair.svg'
+import iconStylist from './assets/icon-stylist.svg'
 
 // Créditos dos ícones:
 // icon-razor.svg: <a href="https://www.flaticon.com/free-icons/barber" title="barber icons">Barber icons created by surang - Flaticon</a>
@@ -18,14 +18,16 @@ const DIFERENCIAIS = [
   {
     icone: iconBarberChair,
     titulo: 'Conforto e ambiente',
-    descricao: 'Um espaço preparado para proporcionar uma experiência agradável.',
+    descricao:
+      'Um espaço preparado para proporcionar uma experiência agradável.',
   },
   {
     icone: iconStylist,
     titulo: 'Estilo e personalidade',
-    descricao: 'Serviços que valorizam o estilo e a individualidade de cada cliente.',
+    descricao:
+      'Serviços que valorizam o estilo e a individualidade de cada cliente.',
   },
-];
+]
 
 export default function SobreNos() {
   return (
@@ -34,7 +36,8 @@ export default function SobreNos() {
         <div className="sobre-nos__content">
           <span className="sobre-nos__label">— SOBRE NÓS</span>
           <h2 className="sobre-nos__title">
-            Mais que um corte.<br />
+            Mais que um corte.
+            <br />
             Uma experiência.
           </h2>
           <p className="sobre-nos__text">
@@ -69,5 +72,5 @@ export default function SobreNos() {
         </div>
       </div>
     </section>
-  );
+  )
 }
