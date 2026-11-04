@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useEhDesktop } from '../../hooks/useEhDesktop.js'
 import './Agendamento.css'
 
@@ -9,56 +9,155 @@ const OPCOES_SERVICO = [
 ]
 
 const OPCOES_PROFISSIONAL = [
-  { valor: 'Alexandre Saraiva Carniato', rotulo: 'Alexandre Saraiva Carniato' },
+  {
+    valor: 'Alexandre Saraiva Carniato',
+    rotulo: 'Alexandre Saraiva Carniato',
+  },
   { valor: 'Luan Pereira', rotulo: 'Luan Pereira' },
   { valor: 'Cauã de Oliveira', rotulo: 'Cauã de Oliveira' },
 ]
 
 const HORARIOS = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00']
 
-export default function Agendamento({ servicoInicial, profissionalInicial }) {
+function obterDataLocal() {
+  const agora = new Date()
+  const ano = agora.getFullYear()
+  const mes = String(agora.getMonth() + 1).padStart(2, '0')
+  const dia = String(agora.getDate()).padStart(2, '0')
+
+  return `${ano}-${mes}-${dia}`
+}
+
+function valorExiste(valor, opcoes) {
+  return opcoes.some((opcao) => opcao.valor === valor)
+}
+
+export default function Agendamento({
+  servicoInicial = '',
+  profissionalInicial = '',
+}) {
   const ref = useRef(null)
   const desktop = useEhDesktop(ref)
 
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
+  // null indica que o usuário ainda não substituiu a pré-seleção recebida.
+  // Assim, novas props são refletidas sem sincronizar estado via useEffect.
+  const [servicoLocal, setServicoLocal] = useState(null)
+  const [profissionalLocal, setProfissionalLocal] = useState(null)
   const [data, setData] = useState('')
   const [horario, setHorario] = useState('')
+  const [errors, setErrors] = useState({})
+  const [mostrandoPrevia, setMostrandoPrevia] = useState(false)
 
-  const hoje = new Date().toISOString().split('T')[0]
+  const hoje = obterDataLocal()
+  const telefoneLimpo = telefone.replace(/\D/g, '')
+  const telefoneValido = /^\d{10,11}$/.test(telefoneLimpo)
 
-  // Estado local dos campos. As pré-seleções de servicoInicial e
-  // profissionalInicial (vindas dos cards US03/US06) têm precedência quando
-  // fornecidas, permitindo que o usuário continue alterando livremente.
-  const [servicoLocal, setServicoLocal] = useState(servicoInicial || '')
-  const [profissionalLocal, setProfissionalLocal] = useState(
-    profissionalInicial || ''
+  // A pré-seleção externa é usada até o usuário escolher outra opção.
+  const servicoExibido =
+    servicoLocal ??
+    (valorExiste(servicoInicial, OPCOES_SERVICO) ? servicoInicial : '')
+  const profissionalExibido =
+    profissionalLocal ??
+    (valorExiste(profissionalInicial, OPCOES_PROFISSIONAL)
+      ? profissionalInicial
+      : '')
+
+  const servicoRotulo =
+    OPCOES_SERVICO.find((opcao) => opcao.valor === servicoExibido)?.rotulo || ''
+  const profissionalRotulo =
+    OPCOES_PROFISSIONAL.find(
+      (opcao) => opcao.valor === profissionalExibido,
+    )?.rotulo || ''
+
+  const formularioValido = Boolean(
+    nome.trim() &&
+      telefoneValido &&
+      valorExiste(servicoExibido, OPCOES_SERVICO) &&
+      valorExiste(profissionalExibido, OPCOES_PROFISSIONAL) &&
+      data &&
+      data >= hoje &&
+      HORARIOS.includes(horario),
   )
 
-  const servicoExibido = servicoInicial || servicoLocal
-  const profissionalExibido = profissionalInicial || profissionalLocal
+  function validarCampos() {
+    const novosErros = {}
 
-  const completo =
-    nome &&
-    telefone &&
-    servicoExibido &&
-    profissionalExibido &&
-    data &&
-    horario
+    if (!nome.trim()) {
+      novosErros.nome = 'Informe o seu nome.'
+    }
+
+    if (!telefone.trim()) {
+      novosErros.telefone = 'Informe o telefone de contato.'
+    } else if (!telefoneValido) {
+      novosErros.telefone =
+        'Telefone inválido. Informe DDD e número (10 ou 11 dígitos).'
+    }
+
+    if (!valorExiste(servicoExibido, OPCOES_SERVICO)) {
+      novosErros.servico = 'Selecione um serviço válido.'
+    }
+
+    if (!valorExiste(profissionalExibido, OPCOES_PROFISSIONAL)) {
+      novosErros.profissional = 'Selecione um profissional válido.'
+    }
+
+    if (!data) {
+      novosErros.data = 'Selecione uma data.'
+    } else if (data < hoje) {
+      novosErros.data = 'Não é possível selecionar uma data passada.'
+    }
+
+    if (!HORARIOS.includes(horario)) {
+      novosErros.horario = 'Selecione um horário.'
+    }
+
+    setErrors(novosErros)
+    return Object.keys(novosErros).length === 0
+  }
+
+  function lidarSubmit(evento) {
+    evento.preventDefault()
+
+    if (validarCampos()) {
+      setMostrandoPrevia(true)
+    } else {
+      setMostrandoPrevia(false)
+    }
+  }
+
+  function lidarEditarNovamente() {
+    setMostrandoPrevia(false)
+  }
+
+  function atualizarCampo(setter, campo, valor) {
+    setter(valor)
+    setErrors((errosAtuais) => {
+      if (!errosAtuais[campo]) return errosAtuais
+
+      const novosErros = { ...errosAtuais }
+      delete novosErros[campo]
+      return novosErros
+    })
+  }
 
   return (
     <section
       ref={ref}
-      id="agendamento"
-      className={`agendamento ${desktop ? 'agendamento--desktop' : 'agendamento--mobile'}`}
+      id="contato"
+      className={`agendamento ${
+        desktop ? 'agendamento--desktop' : 'agendamento--mobile'
+      }`}
+      aria-labelledby="agendamento-titulo"
     >
       <div className="agendamento-conteudo">
         <div className="agendamento-texto">
-          <h2 className="agendamento-titulo">
-            Seu pr\u00f3ximo corte come\u00e7a aqui.
+          <h2 id="agendamento-titulo" className="agendamento-titulo">
+            Seu próximo corte começa aqui.
           </h2>
           <p className="agendamento-subtitulo">
-            Escolha seu servi\u00e7o e solicite um hor\u00e1rio com nossa equipe.
+            Escolha seu serviço e solicite um horário com nossa equipe.
           </p>
         </div>
 
@@ -66,116 +165,298 @@ export default function Agendamento({ servicoInicial, profissionalInicial }) {
           <div className="agendamento-imagem-placeholder" />
         </div>
 
-        <form className="agendamento-form" noValidate onSubmit={(e) => e.preventDefault()}>
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-nome" className="agendamento-label">Nome do cliente</label>
-            <input
-              id="agendamento-nome"
-              type="text"
-              className="agendamento-input"
-              placeholder="Seu nome"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required
-              aria-required="true"
-            />
-          </div>
+        {mostrandoPrevia ? (
+          <div className="agendamento-previa" aria-live="polite">
+            <h3 className="agendamento-previa-titulo">
+              Prévia da solicitação
+            </h3>
 
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-telefone" className="agendamento-label">Telefone de contato</label>
-            <input
-              id="agendamento-telefone"
-              type="tel"
-              className="agendamento-input"
-              placeholder="+55 11 0000 0000"
-              value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-servico" className="agendamento-label">Servi\u00e7o desejado</label>
-            <select
-              id="agendamento-servico"
-              className="agendamento-select"
-              value={servicoExibido}
-              onChange={(e) => setServicoLocal(e.target.value)}
-              required
-              aria-required="true"
-            >
-              <option value="">Selecione um servi\u00e7o</option>
-              {OPCOES_SERVICO.map((opcao) => (
-                <option key={opcao.valor} value={opcao.valor}>
-                  {opcao.rotulo}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-profissional" className="agendamento-label">Profissional desejado</label>
-            <select
-              id="agendamento-profissional"
-              className="agendamento-select"
-              value={profissionalExibido}
-              onChange={(e) => setProfissionalLocal(e.target.value)}
-              required
-              aria-required="true"
-            >
-              <option value="">Selecione um profissional</option>
-              {OPCOES_PROFISSIONAL.map((opcao) => (
-                <option key={opcao.valor} value={opcao.valor}>
-                  {opcao.rotulo}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-data" className="agendamento-label">Data desejada</label>
-            <input
-              id="agendamento-data"
-              type="date"
-              className="agendamento-input"
-              min={hoje}
-              value={data}
-              onChange={(e) => setData(e.target.value)}
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <div className="agendamento-campo">
-            <label htmlFor="agendamento-horario" className="agendamento-label">Hor\u00e1rio desejado</label>
-            <select
-              id="agendamento-horario"
-              className="agendamento-select"
-              value={horario}
-              onChange={(e) => setHorario(e.target.value)}
-              required
-              aria-required="true"
-            >
-              <option value="">Selecione um hor\u00e1rio</option>
-              {HORARIOS.map((h) => (
-                <option key={h} value={h}>{h}</option>
-              ))}
-            </select>
-            {horario && (
-              <span className="agendamento-horario-selecionado">
-                Hor\u00e1rio selecionado: {horario}
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Nome:</span>
+              <span className="agendamento-previa-valor">{nome.trim()}</span>
+            </div>
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Telefone:</span>
+              <span className="agendamento-previa-valor">{telefone}</span>
+            </div>
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Serviço:</span>
+              <span className="agendamento-previa-valor">{servicoRotulo}</span>
+            </div>
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Profissional:</span>
+              <span className="agendamento-previa-valor">
+                {profissionalRotulo}
               </span>
-            )}
-            <p className="agendamento-aviso-horario">
-              Os hor\u00e1rios apresentados s\u00e3o ilustrativos e n\u00e3o representam\u00a0uma reserva confirmada.
-            </p>
-          </div>
+            </div>
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Data:</span>
+              <span className="agendamento-previa-valor">{data}</span>
+            </div>
+            <div className="agendamento-previa-item">
+              <span className="agendamento-previa-label">Horário:</span>
+              <span className="agendamento-previa-valor">{horario}</span>
+            </div>
 
-          <button type="submit" className="agendamento-botao" disabled={!completo}>
-            Agendar agora
-          </button>
-        </form>
+            <p className="agendamento-previa-aviso">
+              Esta solicitação é demonstrativa e não representa uma reserva
+              confirmada.
+            </p>
+
+            <button
+              className="agendamento-botao agendamento-botao-editar"
+              onClick={lidarEditarNovamente}
+              type="button"
+            >
+              Editar informações
+            </button>
+          </div>
+        ) : (
+          <form
+            className="agendamento-form"
+            noValidate
+            onSubmit={lidarSubmit}
+          >
+            <div className="agendamento-campo">
+              <label htmlFor="agendamento-nome" className="agendamento-label">
+                Nome do cliente
+              </label>
+              <input
+                id="agendamento-nome"
+                type="text"
+                autoComplete="name"
+                className={`agendamento-input ${
+                  errors.nome ? 'agendamento-input-erro' : ''
+                }`}
+                placeholder="Seu nome"
+                value={nome}
+                onChange={(evento) =>
+                  atualizarCampo(setNome, 'nome', evento.target.value)
+                }
+                required
+                aria-invalid={Boolean(errors.nome)}
+                aria-describedby={errors.nome ? 'erro-nome' : undefined}
+              />
+              {errors.nome && (
+                <span id="erro-nome" className="agendamento-erro" role="alert">
+                  {errors.nome}
+                </span>
+              )}
+            </div>
+
+            <div className="agendamento-campo">
+              <label
+                htmlFor="agendamento-telefone"
+                className="agendamento-label"
+              >
+                Telefone de contato
+              </label>
+              <input
+                id="agendamento-telefone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                className={`agendamento-input ${
+                  errors.telefone ? 'agendamento-input-erro' : ''
+                }`}
+                placeholder="(00) 00000-0000"
+                value={telefone}
+                onChange={(evento) =>
+                  atualizarCampo(setTelefone, 'telefone', evento.target.value)
+                }
+                required
+                aria-invalid={Boolean(errors.telefone)}
+                aria-describedby={
+                  errors.telefone ? 'erro-telefone' : undefined
+                }
+              />
+              {errors.telefone && (
+                <span
+                  id="erro-telefone"
+                  className="agendamento-erro"
+                  role="alert"
+                >
+                  {errors.telefone}
+                </span>
+              )}
+            </div>
+
+            <div className="agendamento-campo">
+              <label
+                htmlFor="agendamento-servico"
+                className="agendamento-label"
+              >
+                Serviço desejado
+              </label>
+              <select
+                id="agendamento-servico"
+                className={`agendamento-select ${
+                  errors.servico ? 'agendamento-select-erro' : ''
+                }`}
+                value={servicoExibido}
+                onChange={(evento) =>
+                  atualizarCampo(
+                    setServicoLocal,
+                    'servico',
+                    evento.target.value,
+                  )
+                }
+                required
+                aria-invalid={Boolean(errors.servico)}
+                aria-describedby={errors.servico ? 'erro-servico' : undefined}
+              >
+                <option value="">Selecione um serviço</option>
+                {OPCOES_SERVICO.map((opcao) => (
+                  <option key={opcao.valor} value={opcao.valor}>
+                    {opcao.rotulo}
+                  </option>
+                ))}
+              </select>
+              {errors.servico && (
+                <span
+                  id="erro-servico"
+                  className="agendamento-erro"
+                  role="alert"
+                >
+                  {errors.servico}
+                </span>
+              )}
+            </div>
+
+            <div className="agendamento-campo">
+              <label
+                htmlFor="agendamento-profissional"
+                className="agendamento-label"
+              >
+                Profissional desejado
+              </label>
+              <select
+                id="agendamento-profissional"
+                className={`agendamento-select ${
+                  errors.profissional ? 'agendamento-select-erro' : ''
+                }`}
+                value={profissionalExibido}
+                onChange={(evento) =>
+                  atualizarCampo(
+                    setProfissionalLocal,
+                    'profissional',
+                    evento.target.value,
+                  )
+                }
+                required
+                aria-invalid={Boolean(errors.profissional)}
+                aria-describedby={
+                  errors.profissional ? 'erro-profissional' : undefined
+                }
+              >
+                <option value="">Selecione um profissional</option>
+                {OPCOES_PROFISSIONAL.map((opcao) => (
+                  <option key={opcao.valor} value={opcao.valor}>
+                    {opcao.rotulo}
+                  </option>
+                ))}
+              </select>
+              {errors.profissional && (
+                <span
+                  id="erro-profissional"
+                  className="agendamento-erro"
+                  role="alert"
+                >
+                  {errors.profissional}
+                </span>
+              )}
+            </div>
+
+            <div className="agendamento-campo">
+              <label htmlFor="agendamento-data" className="agendamento-label">
+                Data desejada
+              </label>
+              <input
+                id="agendamento-data"
+                type="date"
+                className={`agendamento-input ${
+                  errors.data ? 'agendamento-input-erro' : ''
+                }`}
+                min={hoje}
+                value={data}
+                onChange={(evento) =>
+                  atualizarCampo(setData, 'data', evento.target.value)
+                }
+                required
+                aria-invalid={Boolean(errors.data)}
+                aria-describedby={errors.data ? 'erro-data' : undefined}
+              />
+              {errors.data && (
+                <span id="erro-data" className="agendamento-erro" role="alert">
+                  {errors.data}
+                </span>
+              )}
+            </div>
+
+            <div className="agendamento-campo">
+              <label
+                htmlFor="agendamento-horario"
+                className="agendamento-label"
+              >
+                Horário desejado
+              </label>
+              <select
+                id="agendamento-horario"
+                className={`agendamento-select ${
+                  errors.horario ? 'agendamento-select-erro' : ''
+                }`}
+                value={horario}
+                onChange={(evento) =>
+                  atualizarCampo(setHorario, 'horario', evento.target.value)
+                }
+                required
+                aria-invalid={Boolean(errors.horario)}
+                aria-describedby={
+                  errors.horario
+                    ? 'erro-horario'
+                    : 'aviso-horarios-demonstrativos'
+                }
+              >
+                <option value="">Selecione um horário</option>
+                {HORARIOS.map((opcao) => (
+                  <option key={opcao} value={opcao}>
+                    {opcao}
+                  </option>
+                ))}
+              </select>
+
+              {horario && (
+                <span className="agendamento-horario-selecionado">
+                  Horário selecionado: {horario}
+                </span>
+              )}
+              {errors.horario && (
+                <span
+                  id="erro-horario"
+                  className="agendamento-erro"
+                  role="alert"
+                >
+                  {errors.horario}
+                </span>
+              )}
+              <p
+                id="aviso-horarios-demonstrativos"
+                className="agendamento-aviso-horario"
+              >
+                Os horários apresentados são ilustrativos e não representam
+                vagas ou reservas confirmadas.
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              className="agendamento-botao"
+              disabled={!formularioValido}
+            >
+              Próximo
+            </button>
+          </form>
+        )}
       </div>
     </section>
   )
