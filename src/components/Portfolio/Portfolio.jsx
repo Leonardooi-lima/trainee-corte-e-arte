@@ -9,7 +9,7 @@ import {
   IconeSeta,
   FundoCard,
   TituloSecao,
-} from '../../components/corteArte/ui.jsx'
+} from '../corteArte/ui.jsx'
 import '../../styles/corte-arte.css'
 
 function CarrosselPortfolio({

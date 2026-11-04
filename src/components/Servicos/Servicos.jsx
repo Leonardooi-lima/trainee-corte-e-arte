@@ -10,7 +10,7 @@ import {
   IconeRelogio,
   FundoCard,
   TituloSecao,
-} from '../../components/corteArte/ui.jsx'
+} from '../corteArte/ui.jsx'
 import '../../styles/corte-arte.css'
 
 // Duração estimada (T08)

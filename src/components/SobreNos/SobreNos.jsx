@@ -1,4 +1,4 @@
-import './sobre-nos.css'
+import './SobreNos.css'
 import ambienteImg from './assets/ambiente.png'
 import iconRazor from './assets/icon-razor.svg'
 import iconBarberChair from './assets/icon-barber-chair.svg'
